@@ -1,4 +1,3 @@
-
 const ENV = {
     // Datos de la API externa
     TMDB_API_KEY: "3d00f706e023b8eedd3b29eb9d6e193c",
