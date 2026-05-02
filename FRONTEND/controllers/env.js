@@ -6,3 +6,14 @@ const ENV = {
 
     BACKEND_URL: "http://localhost:3000/" 
 };
+
+function validateLogin(){
+    if(!sessionStorage.user && window.location.href != ENV.BACKEND_URL){
+        alert("Favor de iniciar sesión");
+        window.location.href = ENV.BACKEND_URL;
+    }
+    if(sessionStorage.user && window.location.href == ENV.BACKEND_URL){
+        window.location.href = ENV.BACKEND_URL+"home.html";
+    }
+}
+validateLogin();
