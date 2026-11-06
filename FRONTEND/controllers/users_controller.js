@@ -4,7 +4,7 @@ let selectedBannerPhoto = 1;
 
 async function register(){
     event.preventDefault();
-    let data = new FormData(event.target);
+    const data = new FormData(event.target);
 
     try{
         const response = await fetch('/users', {
@@ -60,8 +60,8 @@ async function updateUser(event) {
     event.preventDefault();
     
     const token = sessionStorage.getItem('token'); 
-    let user = JSON.parse(sessionStorage.user);
-    let route = '/users/' + user.id;
+    const user = JSON.parse(sessionStorage.user);
+    const route = '/users/' + user.id;
 
     const form = document.getElementById('formEdit');
     const formData = new FormData(form);
@@ -178,8 +178,8 @@ window.addEventListener('load', () => {
 async function deleteUser() { 
     event.preventDefault();
     const token = sessionStorage.getItem('token'); 
-    let user = JSON.parse(sessionStorage.user);
-    let route = '/users/' + user._id;
+    const user = JSON.parse(sessionStorage.user);
+    const route = '/users/' + user._id;
 
     try {
         const response = await fetch(route, {
@@ -208,8 +208,8 @@ async function deleteUser() {
 
 async function friendRecom(type){
     const token = sessionStorage.getItem('token'); 
-    let user = JSON.parse(sessionStorage.user);
-    let route = '/users/'+ type +'/' + user._id +"?page=1&limit=7";
+    const user = JSON.parse(sessionStorage.user);
+    const route = '/users/'+ type +'/' + user._id +"?page=1&limit=7";
 
     try {
         const response = await fetch(route, {
@@ -240,13 +240,13 @@ async function populeteFriends() {
     document.getElementById("container-friends").innerHTML = "";
     document.getElementById("container-requests").innerHTML = "";
 
-    let user = JSON.parse(sessionStorage.user);
-    let recom = await friendRecom(1);
+    const user = JSON.parse(sessionStorage.user);
+    const recom = await friendRecom(1);
     for(const r of recom){
         friendPerfil(r, true, false, "container-suggestions");
     }
 
-    let friends = await friendRecom(2);
+    const friends = await friendRecom(2);
     for(const f of friends){
         friendPerfil(f, false, false, "container-friends");
     }
@@ -254,7 +254,7 @@ async function populeteFriends() {
     document.getElementById("number_friends").innerText = "(" + friends.length + ")";
 
 
-    let request = await friendRecom(3);
+    const request = await friendRecom(3);
     for(const r of request){
         friendPerfil(r, false, true, "container-requests");
     }
@@ -274,7 +274,7 @@ async function getPerfil(userId){
         return;
     }
 
-    let data = await getOtherUser(userId);
+    const data = await getOtherUser(userId);
     if (!data) return;
 
     const currentUser = JSON.parse(sessionStorage.user);
@@ -282,26 +282,26 @@ async function getPerfil(userId){
         if(document.querySelector(".gear")) document.querySelector(".gear").style.display = "none";
     }
 
-    let user = data.user;
-    let favorites = data.favorites;
-    let recentReviews = data.recentReviews;
+    const user = data.user;
+    const favorites = data.favorites;
+    const recentReviews = data.recentReviews;
 
-    let box_friends = document.getElementById('friends-box-vis');
+    const box_friends = document.getElementById('friends-box-vis');
     box_friends.style.display = 'none';
 
-    let avatar = document.getElementById('avatar');
+    const avatar = document.getElementById('avatar');
     avatar.src = `assets/profiles/${user.profile_photo || 1}.jpg`;
 
-    let banner = document.getElementById('banner');
+    const banner = document.getElementById('banner');
     const bannerId = user.banner_photo || 1;
     banner.style.backgroundImage = `url('assets/banners/${bannerId}.jpg')`;
 
-    let username = document.getElementById('username');
+    const username = document.getElementById('username');
     username.innerText = user.nick_name || user.name;
-    let emailText = document.getElementById('emailText');
+    const emailText = document.getElementById('emailText');
     emailText.innerText = user.email;
-    let kind_profile = document.getElementById('kind-profile');
-    let userText = document.getElementById('userText');
+    const kind_profile = document.getElementById('kind-profile');
+    const userText = document.getElementById('userText');
     userText.innerText = user.name;
 
     etiquetaUsuario(userId);
@@ -373,19 +373,19 @@ async function getPerfil(userId){
 
     if(user.public){
         kind_profile.innerText = "Publico";
-        let lock1 = document.getElementById('lock-open');
-        let lock2 = document.getElementById('lock-block');
+        const lock1 = document.getElementById('lock-open');
+        const lock2 = document.getElementById('lock-block');
         lock1.style.display = 'inline';
         lock2.style.display = 'none';
-        let solicitud = document.getElementById('solicitudes');
+        const solicitud = document.getElementById('solicitudes');
         solicitud.style.display = 'none';
     } else {
         kind_profile.innerText = "Privado";   
-        let lock1 = document.getElementById('lock-block');
-        let lock2 = document.getElementById('lock-open');
+        const lock1 = document.getElementById('lock-block');
+        const lock2 = document.getElementById('lock-open');
         lock1.style.display = 'inline';
         lock2.style.display = 'none';
-        let solicitud = document.getElementById('solicitudes');
+        const solicitud = document.getElementById('solicitudes');
         solicitud.style.display = 'inline';
     }
     
@@ -434,10 +434,10 @@ async function guardarNickname() {
 }
 
 function friendPerfil(user,recom,reque,id){
-    let box = document.getElementById(id);
-    let a = document.createElement('a');
+    const box = document.getElementById(id);
+    const a = document.createElement('a');
     a.classList.add("friend-card");
-    let img = document.createElement('img');
+    const img = document.createElement('img');
     img.classList.add('friend-avatar');
     img.alt = user.name;
     img.src =  `assets/profiles/${user.profile_photo || 1}.jpg`;
@@ -445,13 +445,13 @@ function friendPerfil(user,recom,reque,id){
         getPerfil(user._id);
     })
     a.append(img);
-    let p1 = document.createElement('p');
+    const p1 = document.createElement('p');
     p1.classList.add("friend-name");
     p1.innerText = user.name;
     a.append(p1);
 
     if(recom){
-        let btn = document.createElement('button');
+        const btn = document.createElement('button');
         btn.classList.add('boton-review');
         btn.innerText = 'Agregar';
         btn.addEventListener('click', () => {
@@ -459,14 +459,14 @@ function friendPerfil(user,recom,reque,id){
         })
         a.append(btn);
     } else if (reque){
-        let btn1 = document.createElement('button');
+        const btn1 = document.createElement('button');
         btn1.classList.add('boton-review');
         btn1.innerText = 'Aceptar';
         btn1.addEventListener('click', () => {
             processRequest(user._id, 'accept');
         })
         a.append(btn1);
-        let btn2 = document.createElement('button');
+        const btn2 = document.createElement('button');
         btn2.classList.add('boton-review');
         btn2.innerText = 'Eliminar';
         btn2.addEventListener('click', () => {
@@ -571,9 +571,9 @@ async function etiquetaUsuario(userId) {
     }
     
     const reseñasBackend = await respuesta.json();
-    let num_etiquetas = reseñasBackend.length;
+    const num_etiquetas = reseñasBackend.length;
     console.log("Número de reseñas para etiquetas:", num_etiquetas);
-    let badge = document.getElementById('user_badge');
+    const badge = document.getElementById('user_badge');
 
     if (num_etiquetas >= 50) {
         badge.innerText = "Cinefilo Legendario";
@@ -595,24 +595,24 @@ async function etiquetaUsuario(userId) {
 
 async function initProfile() {
     console.log("Initializing profile...");
-    let user = JSON.parse(sessionStorage.user);
-    let avatar = document.getElementById('avatar');
+    const user = JSON.parse(sessionStorage.user);
+    const avatar = document.getElementById('avatar');
     const photoId = user.profile_photo || 1;
     avatar.src = `assets/profiles/${photoId}.jpg`;
 
-    let banner = document.getElementById('banner');
+    const banner = document.getElementById('banner');
     const bannerId = user.banner_photo || 1;
     banner.style.backgroundImage = `url('assets/banners/${bannerId}.jpg')`;
 
-    let username = document.getElementById('username');
+    const username = document.getElementById('username');
     username.innerText = user.nick_name?user.nick_name:user.name;
-    let emailText = document.getElementById('emailText');
+    const emailText = document.getElementById('emailText');
     emailText.innerText = user.email;
-    let kind_profile = document.getElementById('kind-profile');
-    let userText = document.getElementById('userText');
+    const kind_profile = document.getElementById('kind-profile');
+    const userText = document.getElementById('userText');
     userText.innerText = user.name;
 
-    let num_friends = document.getElementById("number_friends");
+    const num_friends = document.getElementById("number_friends");
     num_friends.innerText = "(" + user.friends.length + ")";
 
     populeteFriends();
@@ -620,19 +620,19 @@ async function initProfile() {
 
     if(user.public){
         kind_profile.innerText = "Publico";
-        let lock1 = document.getElementById('lock-open');
-        let lock2 = document.getElementById('lock-block');
+        const lock1 = document.getElementById('lock-open');
+        const lock2 = document.getElementById('lock-block');
         lock1.style.display = 'inline';
         lock2.style.display = 'none';
-        let solicitud = document.getElementById('solicitudes');
+        const solicitud = document.getElementById('solicitudes');
         solicitud.style.display = 'none';
     } else {
         kind_profile.innerText = "Privado";   
-        let lock1 = document.getElementById('lock-block');
-        let lock2 = document.getElementById('lock-open');
+        const lock1 = document.getElementById('lock-block');
+        const lock2 = document.getElementById('lock-open');
         lock1.style.display = 'inline';
         lock2.style.display = 'none';
-        let solicitud = document.getElementById('solicitudes');
+        const solicitud = document.getElementById('solicitudes');
         solicitud.style.display = 'inline';
     }
 

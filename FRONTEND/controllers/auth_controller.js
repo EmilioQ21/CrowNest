@@ -1,5 +1,5 @@
 function toggleForms(){ 
-    let form_login = document.getElementById('loginForm'),
+    const form_login = document.getElementById('loginForm'),
         form_register = document.getElementById('registerForm');
          
     if(form_register.style.display == 'none'){ 
@@ -15,7 +15,7 @@ function toggleForms(){
 
 async function login(){
     event.preventDefault();
-    let data = new FormData(event.target);
+    const data = new FormData(event.target);
     try{
         const response = await fetch('/login', {
             method: 'POST',

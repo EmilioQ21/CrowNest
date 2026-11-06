@@ -7,5 +7,9 @@
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.4.1",
     "mongoose-unique-validator": "^6.1.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.10.0"
   }
 }

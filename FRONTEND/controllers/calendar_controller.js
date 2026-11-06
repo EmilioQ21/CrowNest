@@ -1,5 +1,5 @@
 
-let fechaActual = new Date(); 
+const fechaActual = new Date(); 
 let misResenas = []; 
 let intervaloSlider = null;
 

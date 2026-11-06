@@ -156,6 +156,49 @@ async function loadMoviesByGenreDefault() {
 }
 
 
+function createMovieCard(movie) {
+    const movieBox = document.createElement("div");
+    movieBox.classList.add("movieBox");
+
+    movieBox.innerHTML = `
+        <div class="movieWrapper">
+            <img 
+                class="poster"
+                src="${IMG_URL}${movie.poster_path}"
+                alt="${movie.title}"
+            >
+            <div class="overlay">
+                <div class="movieTitle">${movie.title}</div>
+                <div class="movieYear">(${movie.release_date ? movie.release_date.split("-")[0] : ""})</div>
+                <button class="addBtn">+</button>
+            </div>
+        </div>
+    `;
+
+    return movieBox;
+}
+
+function attachMovieCardEvents(movieBox, movie) {
+    movieBox.addEventListener("click", () => {
+        window.location.href = `review.html?id=${movie.id}`;
+    });
+
+    const addBtn = movieBox.querySelector(".addBtn");
+
+    addBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+
+        selectedMovie = movie;
+
+        const modal = new bootstrap.Modal(
+            document.getElementById("modalAgregarPelicula")
+        );
+        modal.show();
+
+        cargarListasEnModal();
+    });
+}
+
 function renderMovies(movies, containerId) {
     const container = document.getElementById(containerId);
     container.innerHTML = "";
@@ -163,43 +206,8 @@ function renderMovies(movies, containerId) {
     movies.forEach(movie => {
         if (!movie.poster_path) return;
 
-        const movieBox = document.createElement("div");
-        movieBox.classList.add("movieBox");
-
-        movieBox.innerHTML = `
-            <div class="movieWrapper">
-                <img 
-                    class="poster"
-                    src="${IMG_URL}${movie.poster_path}"
-                    alt="${movie.title}"
-                >
-                <div class="overlay">
-                    <div class="movieTitle">${movie.title}</div>
-                    <div class="movieYear">(${movie.release_date ? movie.release_date.split("-")[0] : ""})</div>
-                    <button class="addBtn">+</button>
-                </div>
-            </div>
-        `;
-
-        movieBox.addEventListener("click", () => {
-            window.location.href = `review.html?id=${movie.id}`;
-        });
-
-        const addBtn = movieBox.querySelector(".addBtn");
-
-        addBtn.addEventListener("click", (e) => {
-            e.stopPropagation(); 
-
-            selectedMovie = movie;
-
-            const modal = new bootstrap.Modal(
-                document.getElementById("modalAgregarPelicula")
-            );
-            modal.show();
-
-            cargarListasEnModal();
-        });
-
+        const movieBox = createMovieCard(movie);
+        attachMovieCardEvents(movieBox, movie);
         container.appendChild(movieBox);
     });
 }
