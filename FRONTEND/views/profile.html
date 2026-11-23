@@ -1,294 +1,380 @@
 <!doctype html>
 <html lang="en" data-bs-theme="light">
-    <head>
-        <title>Title</title>
-        <!-- Required meta tags -->
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <!-- Bootstrap CSS v5.3.8 -->
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-            crossorigin="anonymous"
-        />
-        <script src="https://kit.fontawesome.com/ae425304bc.js" crossorigin="anonymous"></script>
-        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    </head>
+    <!-- Bootstrap CSS v5.3.8 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <script src="https://kit.fontawesome.com/ae425304bc.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  </head>
 
-    <body>
-        <header>
-            <!-- place navbar here -->
-            <div id="navbar"></div>
+  <body>
+    <header>
+      <!-- place navbar here -->
+      <div id="navbar"></div>
+    </header>
 
-    
-        </header>
-        
-        <main>
-        <section class="hero" id="banner">
-          <div class="hero-content">
-            
-            <div class="profile-card">
-              <span class="gear"><i class="fa-solid fa-pen-to-square" data-bs-toggle="modal" data-bs-target="#modalEditUser"></i> <i class="fa-solid fa-gear" data-bs-toggle="modal" data-bs-target="#modalUpdateUser"></i></span>
-              <img src="" alt="Foto de perfil" class="avatar" id="avatar">
-              
-              <div class="card-body">
-                <span class="badge" id="user_badge"></span>
-                <h2 id="username"></h2>
-                <div class="details">
-                  <p><i class="fa-solid fa-lock-open" style="display: none;" id="lock-open"></i><i class="fa-solid fa-lock" style="display: none;" id="lock-block"></i> Perfil <samp id="kind-profile"></samp> </p>
-                  <p><b>Username: </b><span id="userText"></span> </p>
-                  <p><b>Email: </b><span id="emailText"></span> </p>
-                </div>
-                <span class="location" id="Locaciton"></span>
+    <main>
+      <section class="hero" id="banner">
+        <div class="hero-content">
+          <div class="profile-card">
+            <span class="gear"
+              ><i
+                class="fa-solid fa-pen-to-square"
+                data-bs-toggle="modal"
+                data-bs-target="#modalEditUser"
+              ></i>
+              <i
+                class="fa-solid fa-gear"
+                data-bs-toggle="modal"
+                data-bs-target="#modalUpdateUser"
+              ></i
+            ></span>
+            <img src="" alt="Foto de perfil" class="avatar" id="avatar" />
+
+            <div class="card-body">
+              <span class="badge" id="user_badge"></span>
+              <h2 id="username"></h2>
+              <div class="details">
+                <p>
+                  <i class="fa-solid fa-lock-open" style="display: none" id="lock-open"></i
+                  ><i class="fa-solid fa-lock" style="display: none" id="lock-block"></i> Perfil
+                  <samp id="kind-profile"></samp>
+                </p>
+                <p><b>Username: </b><span id="userText"></span></p>
+                <p><b>Email: </b><span id="emailText"></span></p>
               </div>
-            </div>
-        
-          </div>
-        </section>
-
-        <div id="user-search-bar" class="container mt-5 pt-4">
-          <h3 class="mb-4">Buscar Usuarios</h3>
-            <div class="searchWrapper" style="position: relative; max-width: 400px;">
-                <input 
-                    class="form-control" 
-                    id="userSearchInput"
-                    type="search" 
-                    placeholder="Introduce un nombre de usuario..."
-                >
-                <div id="userSearchResults" class="searchResults"></div>
-            </div>
-        </div>
-
-        <div class="modal" id="modalUpdateUser">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-        
-              <div class="modal-header">
-                <h4 class="modal-title">Editar Usuario</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-              </div>
-              <form id="formEdit">
-                  <div class="modal-body">
-                  <div class="form-group" data-bs-theme="dark">
-                      <label for="name_field" style="margin-bottom: 10px;"> Nombre </label>
-                      <input type="text" class="form-control" style="margin-bottom: 15px;" id="name_field" required=true name="name">
-                  </div>
-                  <div class="form-group" data-bs-theme="dark">
-                      <label for="email_field" style="margin-bottom: 10px;"> Correo </label>
-                      <input type="email" class="form-control" style="margin-bottom: 15px;" id="email_field" required=true name="email">
-                  </div>
-                  <div class="form-group" data-bs-theme="dark">
-                      <label for="email_field" style="margin-bottom: 10px;"> Password </label>
-                      <input type="password" class="form-control" id="password_field" name="password" placeholder="Ingrese tu Contraseña">
-                  </div>
-
-                  <div class="form-group d-flex align-items-center" data-bs-theme="dark">
-                    <label for="password_field" class="mb-0 me-2"> Privacidad </label>
-                    <label class="switch">
-                      <input type="checkbox" id="privacity" name="public">
-                      <span class="slider round"></span>
-                    </label>
-                    <label for="password_field" class="mb-0 me-2" style="margin-left: 10px;"> </label>
-                  </div>
-                  
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalEliminar">Eliminar</button>
-                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar Cambios</button>
-                  </div>
-              </form>
+              <span class="location" id="Locaciton"></span>
             </div>
           </div>
         </div>
+      </section>
 
-        <div class="modal" id="modalEditUser">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-        
-              <div class="modal-header">
-                <h4 class="modal-title">Editar Perfil</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-              </div>
-              <form>
-                  <div class="modal-body">
-                  <div class="form-group" data-bs-theme="dark">
-                      <label for="name_field" style="margin-bottom: 10px;"> Apodo </label>
-                      <input type="text" class="form-control" style="margin-bottom: 15px;" id="nick_name_field" required=true name="nick_name">
-                  </div>
-                  <label for="name_field" style="margin-bottom: 10px;"> Fotos </label>
-                  <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modalUpdatePhotos"> Personalizar Perfil </button>
-                  
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="guardarNickname()">Guardar Cambios</button>
-                  </div>
-              </form>
-            </div>
-          </div>
+      <div id="user-search-bar" class="container mt-5 pt-4">
+        <h3 class="mb-4">Buscar Usuarios</h3>
+        <div class="searchWrapper" style="position: relative; max-width: 400px">
+          <input
+            class="form-control"
+            id="userSearchInput"
+            type="search"
+            placeholder="Introduce un nombre de usuario..."
+          />
+          <div id="userSearchResults" class="searchResults"></div>
         </div>
+      </div>
 
-        <div class="modal fade" id="modalUpdatePhotos" tabindex="-1" aria-hidden="true">
-          <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content bg-dark text-white">
-              <div class="modal-header">
-                <h5 class="modal-title">Personalizar Perfil</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-              </div>
+      <div class="modal" id="modalUpdateUser">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Editar Usuario</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <form id="formEdit">
               <div class="modal-body">
-                
-                <h6 class="mb-3">Selecciona tu Foto de Perfil</h6>
-                <div class="d-flex flex-wrap gap-2 mb-4 justify-content-center" id="profile-options">
-                  <div class="photo-option" onclick="selectPhoto('profile', 1)">
-                    <img src="assets/profiles/1.jpg" id="p-opt-1" class="img-thumbnail" width="80">
-                  </div>
-                  <div class="photo-option" onclick="selectPhoto('profile', 2)">
-                    <img src="assets/profiles/2.jpg" id="p-opt-2" class="img-thumbnail" width="80">
-                  </div>
-                  <div class="photo-option" onclick="selectPhoto('profile', 3)">
-                    <img src="assets/profiles/3.jpg" id="p-opt-3" class="img-thumbnail" width="80">
-                  </div>
-                  <div class="photo-option" onclick="selectPhoto('profile', 4)">
-                    <img src="assets/profiles/4.jpg" id="p-opt-4" class="img-thumbnail" width="80">
-                  </div>
-                  <div class="photo-option" onclick="selectPhoto('profile', 5)">
-                    <img src="assets/profiles/5.jpg" id="p-opt-5" class="img-thumbnail" width="80">
-                  </div>
-                  <div class="photo-option" onclick="selectPhoto('profile', 6)">
-                    <img src="assets/profiles/6.jpg" id="p-opt-6" class="img-thumbnail" width="80">
-                  </div>
+                <div class="form-group" data-bs-theme="dark">
+                  <label for="name_field" style="margin-bottom: 10px"> Nombre </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    style="margin-bottom: 15px"
+                    id="name_field"
+                    required="true"
+                    name="name"
+                  />
                 </div>
-        
-                <hr>
-        
-                <h6 class="mb-3">Selecciona tu Banner</h6>
-                <div class="row g-2 justify-content-center" id="banner-options">
-                  <div class="col-4" onclick="selectPhoto('banner', 1)">
-                    <img src="assets/banners/1.jpg" id="b-opt-1" class="img-fluid border rounded" style="cursor:pointer">
-                  </div>
-                  <div class="col-4" onclick="selectPhoto('banner', 2)">
-                    <img src="assets/banners/2.jpg" id="b-opt-2" class="img-fluid border rounded" style="cursor:pointer">
-                  </div>
-                  <div class="col-4" onclick="selectPhoto('banner', 3)">
-                    <img src="assets/banners/3.jpg" id="b-opt-3" class="img-fluid border rounded" style="cursor:pointer">
-                  </div>
-                  <div class="col-4" onclick="selectPhoto('banner', 4)">
-                    <img src="assets/banners/4.jpg" id="b-opt-4" class="img-fluid border rounded" style="cursor:pointer">
-                  </div>
-                  <div class="col-4" onclick="selectPhoto('banner', 5)">
-                    <img src="assets/banners/5.jpg" id="b-opt-5" class="img-fluid border rounded" style="cursor:pointer">
-                  </div>
-                  <div class="col-4" onclick="selectPhoto('banner', 6)">
-                    <img src="assets/banners/6.jpg" id="b-opt-6" class="img-fluid border rounded" style="cursor:pointer">
-                  </div>
+                <div class="form-group" data-bs-theme="dark">
+                  <label for="email_field" style="margin-bottom: 10px"> Correo </label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    style="margin-bottom: 15px"
+                    id="email_field"
+                    required="true"
+                    name="email"
+                  />
                 </div>
-        
+                <div class="form-group" data-bs-theme="dark">
+                  <label for="email_field" style="margin-bottom: 10px"> Password </label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password_field"
+                    name="password"
+                    placeholder="Ingrese tu Contraseña"
+                  />
+                </div>
+
+                <div class="form-group d-flex align-items-center" data-bs-theme="dark">
+                  <label for="password_field" class="mb-0 me-2"> Privacidad </label>
+                  <label class="switch">
+                    <input type="checkbox" id="privacity" name="public" />
+                    <span class="slider round"></span>
+                  </label>
+                  <label for="password_field" class="mb-0 me-2" style="margin-left: 10px"> </label>
+                </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" onclick="updateUserPhotos()">Guardar Cambios</button>
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modalEliminar"
+                >
+                  Eliminar
+                </button>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">
+                  Guardar Cambios
+                </button>
               </div>
-            </div>
+            </form>
           </div>
         </div>
+      </div>
 
-
-        <div
-            class="modal fade"
-            id="modalEliminar"
-            tabindex="-1"
-        >
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Eliminar Usuario</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body">
-                        ¿Estas seguro de que quieres eliminar la cuenta?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" onclick="deleteUser()">Eliminar Usuario</button>
-                    </div>
+      <div class="modal" id="modalEditUser">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Editar Perfil</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <form>
+              <div class="modal-body">
+                <div class="form-group" data-bs-theme="dark">
+                  <label for="name_field" style="margin-bottom: 10px"> Apodo </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    style="margin-bottom: 15px"
+                    id="nick_name_field"
+                    required="true"
+                    name="nick_name"
+                  />
                 </div>
-            </div>
-        </div>
-
-        <div id="page" class="row">
-            <div class="pestaña" class="col-sm-4">
-                <p class="recom_subtitle">Favoritos:</p>
-                <div class="recommendations">
-                
-            </div>
-            </div>
-            <div class="pestaña" class="col-sm-4">
-            <p class="recom_subtitle">Reseñas:</p>
-            <div class="reviews-container" id="reviews"></div>
-            </div>
-                        
-            <div class="pestaña" class="col-sm-4">
-                <p class="recom_subtitle">Actividad reciente</p>  
-            </div>
-
-            <div id="listas-perfil-section">
-                <p class="recom_subtitle">Listas</p>
-                <div id="listasPerfilContainer" class="listasContainer"></div>
-                <div class="movieGrid" id="moviesListPerfilContainer"></div>
-            </div>
-        </div>
-
-        <div id="friends-box-vis">
-          <div class="section-title" id="friends-count">Amigos <span id="number_friends"></span></div>
-          <div class="friend-grid" id="container-friends">
-            
-          </div>
-          
-          <div class="section-title">Sugerencias para ti</div>
-          <div class="friend-grid" id="container-suggestions">
-            
-          </div>
-          
-          <div id="solicitudes" style="display: none;"> 
-              <div class="section-title">Solicitud de Seguidores</div>
-              <div class="friend-grid" id="container-requests">
-
+                <label for="name_field" style="margin-bottom: 10px"> Fotos </label>
+                <button
+                  type="button"
+                  class="btn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modalUpdatePhotos"
+                >
+                  Personalizar Perfil
+                </button>
               </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                  Cancelar
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-bs-dismiss="modal"
+                  onclick="guardarNickname()"
+                >
+                  Guardar Cambios
+                </button>
+              </div>
+            </form>
           </div>
         </div>
+      </div>
 
-            
-        </main>
-        <footer>
-            <!-- place footer here -->
-        </footer>
-        <!-- Bootstrap JavaScript Bundle (includes Popper) -->
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-            crossorigin="anonymous"
-        ></script>
+      <div class="modal fade" id="modalUpdatePhotos" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content bg-dark text-white">
+            <div class="modal-header">
+              <h5 class="modal-title">Personalizar Perfil</h5>
+              <button
+                type="button"
+                class="btn-close btn-close-white"
+                data-bs-dismiss="modal"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <h6 class="mb-3">Selecciona tu Foto de Perfil</h6>
+              <div class="d-flex flex-wrap gap-2 mb-4 justify-content-center" id="profile-options">
+                <div class="photo-option" onclick="selectPhoto('profile', 1)">
+                  <img src="assets/profiles/1.jpg" id="p-opt-1" class="img-thumbnail" width="80" />
+                </div>
+                <div class="photo-option" onclick="selectPhoto('profile', 2)">
+                  <img src="assets/profiles/2.jpg" id="p-opt-2" class="img-thumbnail" width="80" />
+                </div>
+                <div class="photo-option" onclick="selectPhoto('profile', 3)">
+                  <img src="assets/profiles/3.jpg" id="p-opt-3" class="img-thumbnail" width="80" />
+                </div>
+                <div class="photo-option" onclick="selectPhoto('profile', 4)">
+                  <img src="assets/profiles/4.jpg" id="p-opt-4" class="img-thumbnail" width="80" />
+                </div>
+                <div class="photo-option" onclick="selectPhoto('profile', 5)">
+                  <img src="assets/profiles/5.jpg" id="p-opt-5" class="img-thumbnail" width="80" />
+                </div>
+                <div class="photo-option" onclick="selectPhoto('profile', 6)">
+                  <img src="assets/profiles/6.jpg" id="p-opt-6" class="img-thumbnail" width="80" />
+                </div>
+              </div>
 
-        <!-- SCRIPTS -->
-         <script src="../controllers/env.js"></script>
-         <script src="../controllers/utils.js"></script>
-         
-        <script src="../controllers/auth_controller.js"></script>
-        <script src="../controllers/users_controller.js"></script>
-        <script src="../controllers/profile_controller.js"></script>
-        <script src="../controllers/movie_controller.js"></script>
-        <script src="../controllers/navbar_controller.js"></script>
-        
+              <hr />
 
-        <!-- ESTILOS -->
-         
-        <link rel="stylesheet" href="../assets/estilos/general.css"/>
-        <link rel="stylesheet" href="../assets/estilos/movies.css"/>
-        <link rel="stylesheet" href="../assets/estilos/profile.css"/>
-        <link rel="stylesheet" href="../assets/estilos/friends.css"/>
+              <h6 class="mb-3">Selecciona tu Banner</h6>
+              <div class="row g-2 justify-content-center" id="banner-options">
+                <div class="col-4" onclick="selectPhoto('banner', 1)">
+                  <img
+                    src="assets/banners/1.jpg"
+                    id="b-opt-1"
+                    class="img-fluid border rounded"
+                    style="cursor: pointer"
+                  />
+                </div>
+                <div class="col-4" onclick="selectPhoto('banner', 2)">
+                  <img
+                    src="assets/banners/2.jpg"
+                    id="b-opt-2"
+                    class="img-fluid border rounded"
+                    style="cursor: pointer"
+                  />
+                </div>
+                <div class="col-4" onclick="selectPhoto('banner', 3)">
+                  <img
+                    src="assets/banners/3.jpg"
+                    id="b-opt-3"
+                    class="img-fluid border rounded"
+                    style="cursor: pointer"
+                  />
+                </div>
+                <div class="col-4" onclick="selectPhoto('banner', 4)">
+                  <img
+                    src="assets/banners/4.jpg"
+                    id="b-opt-4"
+                    class="img-fluid border rounded"
+                    style="cursor: pointer"
+                  />
+                </div>
+                <div class="col-4" onclick="selectPhoto('banner', 5)">
+                  <img
+                    src="assets/banners/5.jpg"
+                    id="b-opt-5"
+                    class="img-fluid border rounded"
+                    style="cursor: pointer"
+                  />
+                </div>
+                <div class="col-4" onclick="selectPhoto('banner', 6)">
+                  <img
+                    src="assets/banners/6.jpg"
+                    id="b-opt-6"
+                    class="img-fluid border rounded"
+                    style="cursor: pointer"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                Cancelar
+              </button>
+              <button type="button" class="btn btn-primary" onclick="updateUserPhotos()">
+                Guardar Cambios
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
 
-        <!-- CONTROLADORES -->
-    </body>
+      <div class="modal fade" id="modalEliminar" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Eliminar Usuario</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">¿Estas seguro de que quieres eliminar la cuenta?</div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                Cancelar
+              </button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                data-bs-dismiss="modal"
+                onclick="deleteUser()"
+              >
+                Eliminar Usuario
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="page" class="row">
+        <div class="pestaña" class="col-sm-4">
+          <p class="recom_subtitle">Favoritos:</p>
+          <div class="recommendations"></div>
+        </div>
+        <div class="pestaña" class="col-sm-4">
+          <p class="recom_subtitle">Reseñas:</p>
+          <div class="reviews-container" id="reviews"></div>
+        </div>
+
+        <div class="pestaña" class="col-sm-4">
+          <p class="recom_subtitle">Actividad reciente</p>
+        </div>
+
+        <div id="listas-perfil-section">
+          <p class="recom_subtitle">Listas</p>
+          <div id="listasPerfilContainer" class="listasContainer"></div>
+          <div class="movieGrid" id="moviesListPerfilContainer"></div>
+        </div>
+      </div>
+
+      <div id="friends-box-vis">
+        <div class="section-title" id="friends-count">Amigos <span id="number_friends"></span></div>
+        <div class="friend-grid" id="container-friends"></div>
+
+        <div class="section-title">Sugerencias para ti</div>
+        <div class="friend-grid" id="container-suggestions"></div>
+
+        <div id="solicitudes" style="display: none">
+          <div class="section-title">Solicitud de Seguidores</div>
+          <div class="friend-grid" id="container-requests"></div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <!-- place footer here -->
+    </footer>
+    <!-- Bootstrap JavaScript Bundle (includes Popper) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- SCRIPTS -->
+    <script src="../controllers/env.js"></script>
+    <script src="../controllers/utils.js"></script>
+
+    <script src="../controllers/auth_controller.js"></script>
+    <script src="../controllers/users_controller.js"></script>
+    <script src="../controllers/profile_controller.js"></script>
+    <script src="../controllers/movie_controller.js"></script>
+    <script src="../controllers/navbar_controller.js"></script>
+
+    <!-- ESTILOS -->
+
+    <link rel="stylesheet" href="../assets/estilos/general.css" />
+    <link rel="stylesheet" href="../assets/estilos/movies.css" />
+    <link rel="stylesheet" href="../assets/estilos/profile.css" />
+    <link rel="stylesheet" href="../assets/estilos/friends.css" />
+
+    <!-- CONTROLADORES -->
+  </body>
 </html>

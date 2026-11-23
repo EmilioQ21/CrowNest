@@ -1,8 +1,7 @@
-
 function mostrarLoader(containerId) {
-    const container = document.getElementById(containerId);
-    if (!container) return;
-    container.innerHTML = `
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  container.innerHTML = `
         <div style="display:flex; justify-content:center; padding: 20px;">
             <lottie-player
                 src="https://assets2.lottiefiles.com/packages/lf20_p8bfn5to.json"
@@ -17,8 +16,8 @@ function mostrarLoader(containerId) {
 }
 
 function mostrarLoaderEl(element) {
-    if (!element) return;
-    element.innerHTML = `
+  if (!element) return;
+  element.innerHTML = `
         <div style="display:flex; justify-content:center; padding: 20px;">
             <lottie-player
                 src="https://assets2.lottiefiles.com/packages/lf20_p8bfn5to.json"
