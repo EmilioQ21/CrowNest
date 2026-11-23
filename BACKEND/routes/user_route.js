@@ -1,29 +1,31 @@
+const usersControllers = require('../controllers/users_api_controllers.js');
+const { optionalAuth } = require('../controllers/users_api_controllers.js');
 
-const usersControllers = require( '../controllers/users_api_controllers.js');
-const { optionalAuth } = require('../controllers/users_api_controllers.js'); 
-
-const express = require('express'); 
+const express = require('express');
 
 const routerUsers = express.Router();
-routerUsers.post('/',usersControllers.registerUser);
+routerUsers.post('/', usersControllers.registerUser);
 
-routerUsers.get("/search", usersControllers.searchUsers);
+routerUsers.get('/search', usersControllers.searchUsers);
 
-routerUsers.get("/other/:id", optionalAuth, usersControllers.getOtherUser);
+routerUsers.get('/other/:id', optionalAuth, usersControllers.getOtherUser);
 
 routerUsers.post('/add-friend/:id', usersControllers.authMiddelwere, usersControllers.addFriend);
 
-routerUsers.post('/friend-request/:requestId', usersControllers.authMiddelwere, usersControllers.handleFriendRequest);
+routerUsers.post(
+  '/friend-request/:requestId',
+  usersControllers.authMiddelwere,
+  usersControllers.handleFriendRequest,
+);
 
-routerUsers.get('/:type/:id',usersControllers.getUsers);
-
+routerUsers.get('/:type/:id', usersControllers.getUsers);
 
 routerUsers.use('/:id', usersControllers.authMiddelwere);
 
 routerUsers.get('/:id', usersControllers.getUser);
 
-routerUsers.put('/:id',usersControllers.updateUserInfo);
+routerUsers.put('/:id', usersControllers.updateUserInfo);
 
-routerUsers.delete('/:id',usersControllers.deleteUserInfo);
+routerUsers.delete('/:id', usersControllers.deleteUserInfo);
 
-module.exports = routerUsers;   
+module.exports = routerUsers;
