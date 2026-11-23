@@ -1,260 +1,301 @@
 <!doctype html>
 <html lang="en" data-bs-theme="light">
-    <head>
-        <title>Title</title>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-            crossorigin="anonymous"
+  <head>
+    <title>Title</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <script src="https://kit.fontawesome.com/ae425304bc.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <link rel="stylesheet" href="../assets/estilos/movies.css" />
+    <link rel="stylesheet" href="../assets/estilos/general.css" />
+  </head>
+
+  <body>
+    <header>
+      <div id="navbar"></div>
+    </header>
+    <main>
+      <div class="section">Peliculas calificadas</div>
+      <div class="movieGrid" id="ratedByUserContainer"></div>
+
+      <div class="section">Las peliculas del momento</div>
+      <div class="d-flex justify-content-between align-items-center"></div>
+      <div class="movieGrid" id="popularMoviesContainer"></div>
+
+      <div class="section">Mejor calificadas</div>
+      <div class="d-flex justify-content-between align-items-center"></div>
+      <div class="movieGrid" id="ratedMoviesContainer"></div>
+
+      <div class="section">Filtrar por etiqueta</div>
+      <div class="tags">
+        <span class="tag-icon" data-id="28">Acción</span>
+        <span class="tag-icon" data-id="18">Drama</span>
+        <span class="tag-icon" data-id="878">Ciencia ficción</span>
+        <span class="tag-icon" data-id="53">Suspenso</span>
+        <input
+          type="text"
+          id="customGenreInput"
+          class="tag-icon form-control form-control-sm ms-2"
+          placeholder="otro"
         />
-        <script src="https://kit.fontawesome.com/ae425304bc.js" crossorigin="anonymous"></script>
-        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-        <link rel="stylesheet" href="../assets/estilos/movies.css"/>
-        <link rel="stylesheet" href="../assets/estilos/general.css"/>
+      </div>
 
-    </head>
+      <div class="d-flex justify-content-between align-items-center"></div>
+      <div class="movieGrid" id="filteredMoviesContainer"></div>
 
-    <body>
-        <header>
-            <div id="navbar"></div>
-        </header>
-        <main>
-            
-            <div class="section">Peliculas calificadas</div>
-            <div class="movieGrid" id="ratedByUserContainer"></div>
-            
+      <div class="section d-flex justify-content-between align-items-center">
+        <span>Mis listas</span>
+        <button
+          class="btn btn-outline-light btn-sm me-3"
+          data-bs-toggle="modal"
+          data-bs-target="#modalCrearLista"
+        >
+          + Crear lista
+        </button>
+      </div>
 
-            <div class="section">Las peliculas del momento</div>
-            <div class="d-flex justify-content-between align-items-center"></div>
-            <div class="movieGrid" id="popularMoviesContainer"></div>
-            
-
-            <div class="section">Mejor calificadas</div>
-            <div class="d-flex justify-content-between align-items-center"></div>
-            <div class="movieGrid" id="ratedMoviesContainer"></div>
-
-
-            <div class="section">Filtrar por etiqueta</div>
-            <div class="tags">
-                <span class="tag-icon" data-id="28">Acción</span>
-                <span class="tag-icon" data-id="18">Drama</span>
-                <span class="tag-icon" data-id="878">Ciencia ficción</span>
-                <span class="tag-icon" data-id="53">Suspenso</span>
-                <input type="text" id="customGenreInput" class="tag-icon form-control form-control-sm ms-2" placeholder="otro">
-            </div>
-
-            <div class="d-flex justify-content-between align-items-center"></div>
-            <div class="movieGrid" id="filteredMoviesContainer"></div>
-
-            <div class="section d-flex justify-content-between align-items-center">
-                <span>Mis listas</span>
-                <button 
-                    class="btn btn-outline-light btn-sm me-3" 
-                    data-bs-toggle="modal" 
-                    data-bs-target="#modalCrearLista"
-                >
-                    + Crear lista
-                </button>
-            </div>
-
-            <div class="listasContainer">
-                <div class="listaCard listaCard--activa">
-                    <h5 class="listaCard__titulo">Pendientes</h5>
-                    <p class="listaCard__count">12 películas</p>
-                </div>
-                <div class="listaCard">
-                    <h5 class="listaCard__titulo">Top 2024</h5>
-                    <p class="listaCard__count">8 películas</p>
-                </div>
-                <div class="listaCard">
-                    <h5 class="listaCard__titulo">Para ver con amigos</h5>
-                    <p class="listaCard__count">5 películas</p>
-                </div>
-            </div>
-
-            <div class="movieGrid" id="moviesListContainer">
-            </div>
-
-            
-
-        </main>
-
-        <footer></footer>
-
-        <div class="modal fade" id="modalCrearLista" tabindex="-1" aria-labelledby="modalCrearListaLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content bg-dark text-white">
-                    <div class="modal-header border-secondary">
-                        <h5 class="modal-title" id="modalCrearListaLabel">Crear nueva lista</h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label for="nombreLista" class="form-label">Nombre de la lista</label>
-                            <input 
-                                type="text" 
-                                class="form-control bg-secondary text-white border-0" 
-                                id="nombreLista" 
-                                placeholder="Ej. Películas de terror"
-                                required
-                            >
-                        </div>
-                        <div class="mb-3">
-                            <label for="descripcionLista" class="form-label">Descripción <span class="text-secondary">(opcional)</span></label>
-                            <textarea 
-                                class="form-control bg-secondary text-white border-0" 
-                                id="descripcionLista" 
-                                rows="3" 
-                                placeholder="Describe tu lista..."
-                            ></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Visibilidad</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="visibilidad" id="visPublica" value="publica" checked>
-                                <label class="form-check-label" for="visPublica">Pública</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="visibilidad" id="visPrivada" value="privada">
-                                <label class="form-check-label" for="visPrivada">Privada</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer border-secondary">
-                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" id="crearListaBtn" class="btn btn-outline-light">Crear lista</button>
-                    </div>
-                </div>
-            </div>
+      <div class="listasContainer">
+        <div class="listaCard listaCard--activa">
+          <h5 class="listaCard__titulo">Pendientes</h5>
+          <p class="listaCard__count">12 películas</p>
         </div>
-
-        <div class="modal fade" id="modalAgregarPelicula" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content bg-dark text-white">
-                <div class="modal-header">
-                    <h5>Agregar a lista</h5>
-                </div>
-                <div class="modal-body">
-                    <div id="listasModalContainer"></div>
-                </div>
-            </div>
+        <div class="listaCard">
+          <h5 class="listaCard__titulo">Top 2024</h5>
+          <p class="listaCard__count">8 películas</p>
         </div>
+        <div class="listaCard">
+          <h5 class="listaCard__titulo">Para ver con amigos</h5>
+          <p class="listaCard__count">5 películas</p>
         </div>
+      </div>
 
-        <div class="modal fade" id="modalEliminarPelicula" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content bg-dark text-white">
-            
-            <div class="modal-header border-secondary">
-                <h5 class="modal-title">Eliminar película</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      <div class="movieGrid" id="moviesListContainer"></div>
+    </main>
+
+    <footer></footer>
+
+    <div
+      class="modal fade"
+      id="modalCrearLista"
+      tabindex="-1"
+      aria-labelledby="modalCrearListaLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content bg-dark text-white">
+          <div class="modal-header border-secondary">
+            <h5 class="modal-title" id="modalCrearListaLabel">Crear nueva lista</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Cerrar"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="nombreLista" class="form-label">Nombre de la lista</label>
+              <input
+                type="text"
+                class="form-control bg-secondary text-white border-0"
+                id="nombreLista"
+                placeholder="Ej. Películas de terror"
+                required
+              />
             </div>
-
-            <div class="modal-body">
-                ¿Seguro que quieres eliminar esta película de la lista?
+            <div class="mb-3">
+              <label for="descripcionLista" class="form-label"
+                >Descripción <span class="text-secondary">(opcional)</span></label
+              >
+              <textarea
+                class="form-control bg-secondary text-white border-0"
+                id="descripcionLista"
+                rows="3"
+                placeholder="Describe tu lista..."
+              ></textarea>
             </div>
-
-            <div class="modal-footer border-secondary">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                Cancelar
-                </button>
-                <button type="button" id="confirmDeleteBtn" class="btn btn-danger">
-                Eliminar
-                </button>
+            <div class="mb-3">
+              <label class="form-label">Visibilidad</label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="visibilidad"
+                  id="visPublica"
+                  value="publica"
+                  checked
+                />
+                <label class="form-check-label" for="visPublica">Pública</label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="visibilidad"
+                  id="visPrivada"
+                  value="privada"
+                />
+                <label class="form-check-label" for="visPrivada">Privada</label>
+              </div>
             </div>
-
-
-            </div>
+          </div>
+          <div class="modal-footer border-secondary">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+              Cancelar
+            </button>
+            <button type="button" id="crearListaBtn" class="btn btn-outline-light">
+              Crear lista
+            </button>
+          </div>
         </div>
-        </div>
+      </div>
+    </div>
 
-        <div class="modal fade" id="modalEliminarLista" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content bg-dark text-white">
-                    <div class="modal-header border-secondary">
-                        <h5 class="modal-title">Eliminar lista</h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body">
-                        ¿Seguro que quieres eliminar esta lista? Esta acción no se puede deshacer.
-                    </div>
-                    <div class="modal-footer border-secondary">
-                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-danger" id="confirmDeleteListaBtn">Eliminar</button>
-                    </div>
-                </div>
+    <div class="modal fade" id="modalAgregarPelicula" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content bg-dark text-white">
+          <div class="modal-header">
+            <h5>Agregar a lista</h5>
+          </div>
+          <div class="modal-body">
+            <div id="listasModalContainer"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalEliminarPelicula" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content bg-dark text-white">
+          <div class="modal-header border-secondary">
+            <h5 class="modal-title">Eliminar película</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+
+          <div class="modal-body">¿Seguro que quieres eliminar esta película de la lista?</div>
+
+          <div class="modal-footer border-secondary">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+              Cancelar
+            </button>
+            <button type="button" id="confirmDeleteBtn" class="btn btn-danger">Eliminar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalEliminarLista" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content bg-dark text-white">
+          <div class="modal-header border-secondary">
+            <h5 class="modal-title">Eliminar lista</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            ¿Seguro que quieres eliminar esta lista? Esta acción no se puede deshacer.
+          </div>
+          <div class="modal-footer border-secondary">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+              Cancelar
+            </button>
+            <button type="button" class="btn btn-danger" id="confirmDeleteListaBtn">
+              Eliminar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalEditarLista" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content bg-dark text-white">
+          <div class="modal-header border-secondary">
+            <h5 class="modal-title">Editar lista</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="mb-3">
+              <label class="form-label">Nombre</label>
+              <input
+                type="text"
+                id="editNombreLista"
+                class="form-control bg-secondary text-white border-0"
+              />
             </div>
-        </div>
 
-        <div class="modal fade" id="modalEditarLista" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content bg-dark text-white">
-                    
-                    <div class="modal-header border-secondary">
-                        <h5 class="modal-title">Editar lista</h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                    </div>
-
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label class="form-label">Nombre</label>
-                            <input 
-                                type="text"
-                                id="editNombreLista"
-                                class="form-control bg-secondary text-white border-0"
-                            >
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Descripción</label>
-                            <textarea 
-                                id="editDescripcionLista"
-                                class="form-control bg-secondary text-white border-0"
-                            ></textarea>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Visibilidad</label>
-
-                            <div class="form-check">
-                                <input type="radio" name="editVisibilidad" id="editVisPublica" value="publica" class="form-check-input">
-                                <label class="form-check-label">Pública</label>
-                            </div>
-
-                            <div class="form-check">
-                                <input type="radio" name="editVisibilidad" id="editVisPrivada" value="privada" class="form-check-input">
-                                <label class="form-check-label">Privada</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="modal-footer border-secondary">
-                        <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button id="guardarCambiosBtn" class="btn btn-outline-light">
-                            Guardar cambios
-                        </button>
-                    </div>
-
-                </div>
+            <div class="mb-3">
+              <label class="form-label">Descripción</label>
+              <textarea
+                id="editDescripcionLista"
+                class="form-control bg-secondary text-white border-0"
+              ></textarea>
             </div>
+
+            <div class="mb-3">
+              <label class="form-label">Visibilidad</label>
+
+              <div class="form-check">
+                <input
+                  type="radio"
+                  name="editVisibilidad"
+                  id="editVisPublica"
+                  value="publica"
+                  class="form-check-input"
+                />
+                <label class="form-check-label">Pública</label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  type="radio"
+                  name="editVisibilidad"
+                  id="editVisPrivada"
+                  value="privada"
+                  class="form-check-input"
+                />
+                <label class="form-check-label">Privada</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer border-secondary">
+            <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button id="guardarCambiosBtn" class="btn btn-outline-light">Guardar cambios</button>
+          </div>
         </div>
+      </div>
+    </div>
 
-        
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
 
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-            crossorigin="anonymous"
-        ></script>
-
-        <script src="../controllers/env.js"></script>
-        <script src="../controllers/utils.js"></script>
-        <script src="../controllers/auth_controller.js"></script>
-        <script src="../controllers/movie_controller.js"></script>
-        <script src="../controllers/list_controller.js"></script>
-        <script src="../controllers/navbar_controller.js"></script>
-    </body>
+    <script src="../controllers/env.js"></script>
+    <script src="../controllers/utils.js"></script>
+    <script src="../controllers/auth_controller.js"></script>
+    <script src="../controllers/movie_controller.js"></script>
+    <script src="../controllers/list_controller.js"></script>
+    <script src="../controllers/navbar_controller.js"></script>
+  </body>
 </html>

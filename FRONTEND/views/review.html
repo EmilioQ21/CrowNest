@@ -1,161 +1,194 @@
 <!doctype html>
 <html lang="en" data-bs-theme="light">
-    <head>
-        <title>Title</title>
-        <!-- Required meta tags -->
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <!-- Bootstrap CSS v5.3.8 -->
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-            crossorigin="anonymous"
+    <!-- Bootstrap CSS v5.3.8 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+
+    <script src="https://kit.fontawesome.com/ae425304bc.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <!-- place navbar here -->
+      <div id="navbar"></div>
+    </header>
+
+    <div class="page">
+      <aside class="sidebar">
+        <img
+          src="https://es.web.img3.acsta.net/img/95/4c/954c30eb27156ff168370a46ca2a3f5b.jpg"
+          class="movie"
         />
 
-        <script src="https://kit.fontawesome.com/ae425304bc.js" crossorigin="anonymous"></script>
-        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    </head>
+        <button
+          id="btn-favorito"
+          class="btn btn-outline-danger w-100 mt-2 mb-3"
+          onclick="toggleFavorito()"
+        >
+          <i class="fa-solid fa-heart"></i> Agregar a Favoritos
+        </button>
 
-    <body>
-        <header>
-            <!-- place navbar here -->
-            <div id="navbar"></div>
-
-        </header>
-
-        <div class="page">
-            <aside class="sidebar">
-                <img src="https://es.web.img3.acsta.net/img/95/4c/954c30eb27156ff168370a46ca2a3f5b.jpg" class="movie"></img>
-                
-                <button id="btn-favorito" class="btn btn-outline-danger w-100 mt-2 mb-3" onclick="toggleFavorito()">
-                    <i class="fa-solid fa-heart"></i> Agregar a Favoritos
-                </button>
-                                
-                <div id="movie_description">
-                    <p id="title_sinopsis">Sinopsis</p>
-                    <p id="sinopsis">
-                        Judy y Nick se encuentran tras la retorcida pista de un misterioso reptil que llega a Zootopia y pone patas arriba la metrópolis de los mamíferos.
-                    </p>
-                </div>
-
-                <div class="rating">
-                    <span class="">  </span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span> 3.0 </span>
-                </div>
-            </aside>
-    
-            <main class="content">
-                <h1 id="movie_title">Zootopia 2</h1>
-        
-                <div class="tags">
-                    <span class="tag-icon">Acción</span>
-                    <span class="tag-icon">Drama</span>
-                    <span class="tag-icon">Ciencia ficción</span>
-                    <span class="tag-icon">Suspenso</span>
-                </div>
-                
-                <div id="div-review">
-                    <label for="" class="form-label" id="movie-sub"> Reseñas: </label>
-                    <div id="text-review">
-                        <textarea class="form-control review-box bg-dark text-white" name="" id="reviewTextInput" rows="3"></textarea>
-                    </div>
-
-                    <div class="form-check form-switch mt-3 mb-2">
-                        <input class="form-check-input" type="checkbox" role="switch" id="isWatchedInput" checked>
-                        <label class="form-check-label" style="color: white;" for="isWatchedInput">
-                            <i class="fa-solid fa-eye"></i> Ya vi esta película
-                        </label>
-                    </div>
-
-                    <div class="mb-3 mt-2" id="div-fecha">
-                        <label for="watchedAtInput" class="form-label" style="color: white;">¿Cuándo la viste?</label>
-                        <input type="date" class="form-control bg-dark text-white border-secondary" id="watchedAtInput">
-                    </div>
-
-
-                    <div id="review-footer">
-                        <div id="rating-review">
-                            <span class="">  </span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                        </div>
-                        <div id="div-boton"><button type="submit" id="btnSubmitReview" class="boton-review"> Publicar Reseña </button></div>
-                    </div>
-                </div>
-
-                <div class="reviews-section">
-                    
-                    <div class="reviews-filter">
-                    <button class="boton-review filter-btn" data-rating="Todas">Todas</button>
-                    <button class="boton-review filter-btn" data-rating="Mias">Mis Reseñas</button>
-                    <button class="boton-review filter-btn" data-rating="Amigos">Amigos</button>
-                    <button class="boton-review filter-btn" data-rating="5">★★★★★</button>
-                    <button class="boton-review filter-btn" data-rating="4">★★★★☆</button>
-                    <button class="boton-review filter-btn" data-rating="3">★★★☆☆</button>
-                    <button class="boton-review filter-btn" data-rating="2">★★☆☆☆</button>
-                    <button class="boton-review filter-btn" data-rating="1">★☆☆☆☆</button>
-                    </div>
-                
-                    
-                    <div class="reviews-container" id="reviews">
-                        
-                    </div>
-                    
-                    
-                    <div id="pagination-controls" class="d-flex justify-content-center mt-3 gap-2">
-                        
-                    </div>
-                </div>
-
-    
-                <div id="recom">
-                    <p id="recom_subtitle">También te puede interesar:</p>
-        
-                    <div class="recommendations">
-                        <div class="movieBox"><img class="poster" src="https://a.ltrbxd.com/resized/film-poster/1/1/9/6/8/0/8/1196808-minions-3-0-2000-0-3000-crop.jpg?v=a50f031caa" ></img></div>
-                        <div class="movieBox"><img class="poster" src="https://a.ltrbxd.com/resized/film-poster/1/0/0/0/2/7/7/1000277-moana-0-2000-0-3000-crop.jpg?v=65401ce4f2" ></img></div>
-                        <div class="movieBox"><img class="poster" src="https://m.media-amazon.com/images/M/MV5BYjk1Y2U4MjQtY2ZiNS00OWQyLWI3MmYtZWUwNmRjYWRiNWNhXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" ></img></div>
-                    </div>
-                </div>
-            </main>
+        <div id="movie_description">
+          <p id="title_sinopsis">Sinopsis</p>
+          <p id="sinopsis">
+            Judy y Nick se encuentran tras la retorcida pista de un misterioso reptil que llega a
+            Zootopia y pone patas arriba la metrópolis de los mamíferos.
+          </p>
         </div>
 
+        <div class="rating">
+          <span class=""> </span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star"></span>
+          <span class="fa fa-star"></span>
+          <span> 3.0 </span>
+        </div>
+      </aside>
 
-        <footer>
-            <!-- place footer here -->
-        </footer>
-        <!-- Bootstrap JavaScript Bundle (includes Popper) -->
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-            crossorigin="anonymous"
-        ></script>
+      <main class="content">
+        <h1 id="movie_title">Zootopia 2</h1>
 
-        <!-- SCRIPTS -->
-        <script src="../controllers/utils.js"></script>
-        <script src="../controllers/env.js"></script>
-        <script src="../controllers/auth_controller.js"></script>
-        
-        <script src="../controllers/review_controller.js"></script>
-        <script src="../controllers/users_controller.js"></script>
+        <div class="tags">
+          <span class="tag-icon">Acción</span>
+          <span class="tag-icon">Drama</span>
+          <span class="tag-icon">Ciencia ficción</span>
+          <span class="tag-icon">Suspenso</span>
+        </div>
 
-        <script src="../controllers/navbar_controller.js"></script>
-        <script src="../controllers/movie_controller.js"></script>
+        <div id="div-review">
+          <label for="" class="form-label" id="movie-sub"> Reseñas: </label>
+          <div id="text-review">
+            <textarea
+              class="form-control review-box bg-dark text-white"
+              name=""
+              id="reviewTextInput"
+              rows="3"
+            ></textarea>
+          </div>
 
-        <!-- ESTILOS -->
-        <link rel="stylesheet" href="../assets/estilos/general.css"/>
-        <link rel="stylesheet" href="../assets/estilos/review.css"/>
+          <div class="form-check form-switch mt-3 mb-2">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              role="switch"
+              id="isWatchedInput"
+              checked
+            />
+            <label class="form-check-label" style="color: white" for="isWatchedInput">
+              <i class="fa-solid fa-eye"></i> Ya vi esta película
+            </label>
+          </div>
 
-        <!-- CONTROLADORES -->
-    </body>
+          <div class="mb-3 mt-2" id="div-fecha">
+            <label for="watchedAtInput" class="form-label" style="color: white"
+              >¿Cuándo la viste?</label
+            >
+            <input
+              type="date"
+              class="form-control bg-dark text-white border-secondary"
+              id="watchedAtInput"
+            />
+          </div>
+
+          <div id="review-footer">
+            <div id="rating-review">
+              <span class=""> </span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+            </div>
+            <div id="div-boton">
+              <button type="submit" id="btnSubmitReview" class="boton-review">
+                Publicar Reseña
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="reviews-section">
+          <div class="reviews-filter">
+            <button class="boton-review filter-btn" data-rating="Todas">Todas</button>
+            <button class="boton-review filter-btn" data-rating="Mias">Mis Reseñas</button>
+            <button class="boton-review filter-btn" data-rating="Amigos">Amigos</button>
+            <button class="boton-review filter-btn" data-rating="5">★★★★★</button>
+            <button class="boton-review filter-btn" data-rating="4">★★★★☆</button>
+            <button class="boton-review filter-btn" data-rating="3">★★★☆☆</button>
+            <button class="boton-review filter-btn" data-rating="2">★★☆☆☆</button>
+            <button class="boton-review filter-btn" data-rating="1">★☆☆☆☆</button>
+          </div>
+
+          <div class="reviews-container" id="reviews"></div>
+
+          <div id="pagination-controls" class="d-flex justify-content-center mt-3 gap-2"></div>
+        </div>
+
+        <div id="recom">
+          <p id="recom_subtitle">También te puede interesar:</p>
+
+          <div class="recommendations">
+            <div class="movieBox">
+              <img
+                class="poster"
+                src="https://a.ltrbxd.com/resized/film-poster/1/1/9/6/8/0/8/1196808-minions-3-0-2000-0-3000-crop.jpg?v=a50f031caa"
+              />
+            </div>
+            <div class="movieBox">
+              <img
+                class="poster"
+                src="https://a.ltrbxd.com/resized/film-poster/1/0/0/0/2/7/7/1000277-moana-0-2000-0-3000-crop.jpg?v=65401ce4f2"
+              />
+            </div>
+            <div class="movieBox">
+              <img
+                class="poster"
+                src="https://m.media-amazon.com/images/M/MV5BYjk1Y2U4MjQtY2ZiNS00OWQyLWI3MmYtZWUwNmRjYWRiNWNhXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+              />
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <footer>
+      <!-- place footer here -->
+    </footer>
+    <!-- Bootstrap JavaScript Bundle (includes Popper) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- SCRIPTS -->
+    <script src="../controllers/utils.js"></script>
+    <script src="../controllers/env.js"></script>
+    <script src="../controllers/auth_controller.js"></script>
+
+    <script src="../controllers/review_controller.js"></script>
+    <script src="../controllers/users_controller.js"></script>
+
+    <script src="../controllers/navbar_controller.js"></script>
+    <script src="../controllers/movie_controller.js"></script>
+
+    <!-- ESTILOS -->
+    <link rel="stylesheet" href="../assets/estilos/general.css" />
+    <link rel="stylesheet" href="../assets/estilos/review.css" />
+
+    <!-- CONTROLADORES -->
+  </body>
 </html>
