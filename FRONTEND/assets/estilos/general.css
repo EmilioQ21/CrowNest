@@ -1,71 +1,70 @@
 body {
-    background-color: #101010;
-    padding-top: 80px;
+  background-color: #101010;
+  padding-top: 80px;
 }
 
-
 .searchWrapper {
-    position: relative;
-    width: 300px;
+  position: relative;
+  width: 300px;
 }
 
 .searchResults {
-    position: absolute;
-    top: 110%;
-    left: 0;
-    width: 100%;
+  position: absolute;
+  top: 110%;
+  left: 0;
+  width: 100%;
 
-    background: #1a1a1a;
-    border-radius: 12px;
+  background: #1a1a1a;
+  border-radius: 12px;
 
-    box-shadow: 0 8px 25px rgba(128, 0, 255, 0.3);
+  box-shadow: 0 8px 25px rgba(128, 0, 255, 0.3);
 
-    max-height: 300px;
-    overflow-y: auto;
+  max-height: 300px;
+  overflow-y: auto;
 
-    display: none;
-    z-index: 999;
+  display: none;
+  z-index: 999;
 
-    animation: fadeIn 0.2s ease;
+  animation: fadeIn 0.2s ease;
 }
 
 .searchItem {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 
-    padding: 10px 12px;
-    cursor: pointer;
+  padding: 10px 12px;
+  cursor: pointer;
 
-    transition: 0.2s;
+  transition: 0.2s;
 }
 
 .searchItem:hover {
-    background: #43006B;
+  background: #43006b;
 }
 
 .searchItem img {
-    width: 40px;
-    border-radius: 6px;
+  width: 40px;
+  border-radius: 6px;
 }
 
 .searchItem span {
-    color: #fff;
-    font-size: 14px;
+  color: #fff;
+  font-size: 14px;
 }
 
 .searchItem small {
-    color: #bbb;
-    font-size: 12px;
+  color: #bbb;
+  font-size: 12px;
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-5px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
