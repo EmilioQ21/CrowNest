@@ -1,0 +1,81 @@
+Finding:     [1;3;mREDACTED[0m
+Secret:      [1;3;mREDACTED[0m
+RuleID:      tmdb-api-key
+Entropy:     4.478308
+File:        FRONTEND/controllers/env.js
+Line:        3
+Commit:      27fd96b1c06ae8a87fc26378fac597602b7595c5
+Author:      EnriqueM05
+Email:       pokequique0527@gmail.com
+Date:        2026-11-23T05:03:23Z
+Fingerprint: 27fd96b1c06ae8a87fc26378fac597602b7595c5:FRONTEND/controllers/env.js:tmdb-api-key:3
+Link:        https://github.com/EmilioQ21/CrowNest/blob/27fd96b1c06ae8a87fc26378fac597602b7595c5/FRONTEND/controllers/env.js#L3
+
+Finding:     '[1;3;mREDACTED[0mac-ff2lull-shard-00-...
+Secret:      [1;3;mREDACTED[0m
+RuleID:      mongodb-uri
+Entropy:     3.789898
+File:        BACKEND/database/config.js
+Line:        3
+Commit:      8d3bfc3919122eaaba3ef9e20f7b46210b41fd0d
+Author:      EnriqueM05
+Email:       pokequique0527@gmail.com
+Date:        2026-11-23T04:55:51Z
+Fingerprint: 8d3bfc3919122eaaba3ef9e20f7b46210b41fd0d:BACKEND/database/config.js:mongodb-uri:3
+Link:        https://github.com/EmilioQ21/CrowNest/blob/8d3bfc3919122eaaba3ef9e20f7b46210b41fd0d/BACKEND/database/config.js#L3
+
+Finding:     const [1;3;mREDACTED[0m
+Secret:      [1;3;mREDACTED[0m
+RuleID:      jwt-secret-key
+Entropy:     3.895639
+File:        BACKEND/controllers/users_api_controllers.js
+Line:        6
+Commit:      ff04586c9c45b4e97172dec63a8bae2340c3b6f6
+Author:      Omara Cámara
+Email:       omara.camara@iteso.mx
+Date:        2026-04-29T13:34:55Z
+Fingerprint: ff04586c9c45b4e97172dec63a8bae2340c3b6f6:BACKEND/controllers/users_api_controllers.js:jwt-secret-key:6
+Link:        https://github.com/EmilioQ21/CrowNest/blob/ff04586c9c45b4e97172dec63a8bae2340c3b6f6/BACKEND/controllers/users_api_controllers.js#L6
+
+Finding:     MONGODB_URI: "[1;3;mREDACTED[0mac-ff2lull-shard-00-...
+Secret:      [1;3;mREDACTED[0m
+RuleID:      mongodb-uri
+Entropy:     3.789898
+File:        BACKEND/database/config.js
+Line:        3
+Commit:      a25197e10fcc3f633368a0febd61991d2506ca05
+Author:      EmilioQ21
+Email:       emilio.segura.v@outlook.com
+Date:        2026-04-29T02:27:11Z
+Fingerprint: a25197e10fcc3f633368a0febd61991d2506ca05:BACKEND/database/config.js:mongodb-uri:3
+Link:        https://github.com/EmilioQ21/CrowNest/blob/a25197e10fcc3f633368a0febd61991d2506ca05/BACKEND/database/config.js#L3
+
+Finding:     MONGODB_URI: "[1;3;mREDACTED[0mcrownestcrluster.fkf...
+Secret:      [1;3;mREDACTED[0m
+RuleID:      mongodb-uri
+Entropy:     3.995715
+File:        BACKEND/database/config.js
+Line:        3
+Commit:      5cfaa3963c1b4a07e222ee59fadd7aa4feecf09b
+Author:      Yeshua-Miranda
+Email:       yeshua.miranda@iteso.mx
+Date:        2026-04-25T00:50:59Z
+Fingerprint: 5cfaa3963c1b4a07e222ee59fadd7aa4feecf09b:BACKEND/database/config.js:mongodb-uri:3
+Link:        https://github.com/EmilioQ21/CrowNest/blob/5cfaa3963c1b4a07e222ee59fadd7aa4feecf09b/BACKEND/database/config.js#L3
+
+Finding:     [1;3;mREDACTED[0m
+Secret:      [1;3;mREDACTED[0m
+RuleID:      tmdb-api-key
+Entropy:     4.478308
+File:        FRONTEND/controllers/env.js
+Line:        4
+Commit:      5cfaa3963c1b4a07e222ee59fadd7aa4feecf09b
+Author:      Yeshua-Miranda
+Email:       yeshua.miranda@iteso.mx
+Date:        2026-04-25T00:50:59Z
+Fingerprint: 5cfaa3963c1b4a07e222ee59fadd7aa4feecf09b:FRONTEND/controllers/env.js:tmdb-api-key:4
+Link:        https://github.com/EmilioQ21/CrowNest/blob/5cfaa3963c1b4a07e222ee59fadd7aa4feecf09b/FRONTEND/controllers/env.js#L4
+
+[90m12:53AM[0m [32mINF[0m [1m151 commits scanned.[0m
+[90m12:53AM[0m [32mINF[0m [1mscanned ~46178517 bytes (46.18 MB) in 504ms[0m
+[90m12:53AM[0m [33mWRN[0m [1mleaks found: 6[0m
