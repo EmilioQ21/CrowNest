@@ -1,0 +1,110 @@
+PASS tests/integration/setup.test.js
+  Configuración de integración
+    ✓ la base de datos en memoria está conectada (3 ms)
+    ✓ la app responde sin conectarse a Atlas (28 ms)
+
+(node:88039) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:88036) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:88039) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(node:88037) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:88036) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+PASS tests/integration/account.test.js
+  GET /users/:id
+    ✓ H20: hoy responde 500 porque usa parseInt sobre un id de Mongo (342 ms)
+    ✓ sin token responde 401 (3 ms)
+  PUT /users/:id
+    ✓ actualiza el perfil sin devolver la contraseña (200) (165 ms)
+    ✓ cambia la contraseña y se puede entrar con la nueva (421 ms)
+    ✓ sin token responde 401 (2 ms)
+  DELETE /users/:id
+    ✓ borra la cuenta junto con sus listas y reseñas (200) (169 ms)
+    ✓ H2: hoy cualquier usuario con sesión borra la cuenta de otro (313 ms)
+    ✓ un usuario que no existe responde 404 (142 ms)
+    ✓ sin token responde 401 (2 ms)
+
+(node:88037) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(node:88036) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(node:88036) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+PASS tests/integration/users.test.js
+  POST /users
+    ✓ registra un usuario y devuelve su token (200) (312 ms)
+    ✓ crea la lista Favoritos del usuario (80 ms)
+    ✓ rechaza contraseñas distintas (401) (3 ms)
+    ✓ rechaza un registro sin nombre (400) (74 ms)
+    ✓ rechaza un correo repetido (400) (155 ms)
+  POST /users, hallazgos conocidos
+    ✓ H3: la respuesta incluye el hash de la contraseña (71 ms)
+    ✓ H14: hoy acepta una contraseña de 3 caracteres (72 ms)
+  POST /login
+    ✓ entra con datos correctos (200) (141 ms)
+    ✓ una contraseña incorrecta responde 401 (153 ms)
+    ✓ un correo que no existe responde 401 (80 ms)
+    ✓ H4: los dos errores dan mensajes distintos (164 ms)
+  GET /users/search
+    ✓ encuentra por parte del nombre sin importar mayúsculas (218 ms)
+    ✓ con menos de 2 letras responde lista vacía (216 ms)
+    ✓ sin texto responde lista vacía (211 ms)
+    ✓ no devuelve la contraseña ni el correo (213 ms)
+  GET /users/other/:id
+    ✓ es público y devuelve el perfil con sus favoritos (200) (142 ms)
+    ✓ incluye las reseñas recientes (155 ms)
+    ✓ un id inválido responde 400 (2 ms)
+    ✓ un usuario que no existe responde 404 (2 ms)
+
+PASS tests/integration/reviews.test.js
+  POST /reviews/crear
+    ✓ guarda una reseña válida (201) (345 ms)
+    ✓ rechaza una calificación de 6 (400) (160 ms)
+    ✓ rechaza una reseña sin título de película (400) (150 ms)
+    ✓ sin token responde 401 (2 ms)
+  GET /reviews/mis-resenas y /reviews/otras-resenas/:id
+    ✓ mis-resenas solo trae las del usuario (284 ms)
+    ✓ mis-resenas sin token responde 401 (3 ms)
+    ✓ otras-resenas trae las reseñas de otro usuario (326 ms)
+  PUT /reviews/editar/:id
+    ✓ el dueño edita su reseña (200) (147 ms)
+    ✓ otro usuario no puede editarla (404) (286 ms)
+    ✓ una calificación inválida responde 400 (143 ms)
+    ✓ sin token responde 401 (2 ms)
+  DELETE /reviews/borrar/:id
+    ✓ el dueño borra su reseña (200) (143 ms)
+    ✓ otro usuario no puede borrarla (404) (282 ms)
+    ✓ sin token responde 401 (2 ms)
+  GET /reviews/pelicula/:movieId
+    ✓ es público y trae solo las reseñas de esa película (157 ms)
+    ✓ filtra por calificación (150 ms)
+    ✓ pagina los resultados (143 ms)
+    ✓ un autor con formato inválido hoy responde 500 (141 ms)
+
+PASS tests/integration/friends.test.js (5.853 s)
+  POST /users/add-friend/:id, casos normales
+    ✓ con perfil público quedan como amigos al instante (200) (574 ms)
+    ✓ con perfil privado queda una solicitud pendiente (200) (284 ms)
+  POST /users/add-friend/:id, rechazos
+    ✓ no puede agregarse a sí mismo (400) (149 ms)
+    ✓ no repite una solicitud pendiente (400) (322 ms)
+    ✓ no repite una amistad (400) (286 ms)
+    ✓ un usuario que no existe responde 404 (143 ms)
+    ✓ sin token responde 401 (2 ms)
+  POST /users/friend-request/:requestId
+    ✓ aceptar deja a los dos como amigos (200) (287 ms)
+    ✓ rechazar quita la solicitud y no hay amistad (200) (298 ms)
+    ✓ una acción inválida responde 400 (284 ms)
+    ✓ sin token responde 401 (2 ms)
+  GET /users/:type/:id, listados
+    ✓ tipo 1 trae a los demás usuarios, sin el propio (409 ms)
+    ✓ tipo 2 sin amigos responde lista vacía (395 ms)
+    ✓ pagina los resultados (390 ms)
+    ✓ no incluye datos privados (385 ms)
+  GET /users/:type/:id, rechazos
+    ✓ un tipo inválido responde 400 (129 ms)
+    ✓ un usuario que no existe responde 404 (2 ms)
+
+Test Suites: 5 passed, 5 total
+Tests:       65 passed, 65 total
+Snapshots:   0 total
+Time:        6.105 s, estimated 7 s
+Ran all test suites matching tests/integration.

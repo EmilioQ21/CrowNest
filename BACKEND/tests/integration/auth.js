@@ -18,7 +18,12 @@ async function crearUsuario(app) {
     .post('/login')
     .send({ email: datos.email, password: datos.password });
   const usuario = login.body.user;
-  return { token: login.body.token, id: String(usuario._id || usuario.id) };
+  return {
+    token: login.body.token,
+    id: String(usuario._id || usuario.id),
+    email: datos.email,
+    password: datos.password,
+  };
 }
 
 module.exports = { crearUsuario };
