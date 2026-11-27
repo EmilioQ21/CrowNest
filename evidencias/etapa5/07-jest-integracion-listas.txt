@@ -1,0 +1,85 @@
+PASS tests/integration/setup.test.js
+  Configuración de integración
+    ✓ la base de datos en memoria está conectada (3 ms)
+    ✓ la app responde sin conectarse a Atlas (17 ms)
+
+(node:86450) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:86450) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(node:86449) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS tests/integration/reviews.test.js
+  POST /reviews/crear
+    ✓ guarda una reseña válida (201) (495 ms)
+    ✓ rechaza una calificación de 6 (400) (154 ms)
+    ✓ rechaza una reseña sin título de película (400) (140 ms)
+    ✓ sin token responde 401 (3 ms)
+  GET /reviews/mis-resenas y /reviews/otras-resenas/:id
+    ✓ mis-resenas solo trae las del usuario (294 ms)
+    ✓ mis-resenas sin token responde 401 (2 ms)
+    ✓ otras-resenas trae las reseñas de otro usuario (288 ms)
+  PUT /reviews/editar/:id
+    ✓ el dueño edita su reseña (200) (174 ms)
+    ✓ otro usuario no puede editarla (404) (291 ms)
+    ✓ una calificación inválida responde 400 (167 ms)
+    ✓ sin token responde 401 (2 ms)
+  DELETE /reviews/borrar/:id
+    ✓ el dueño borra su reseña (200) (149 ms)
+    ✓ otro usuario no puede borrarla (404) (283 ms)
+    ✓ sin token responde 401 (2 ms)
+  GET /reviews/pelicula/:movieId
+    ✓ es público y trae solo las reseñas de esa película (154 ms)
+    ✓ filtra por calificación (144 ms)
+    ✓ pagina los resultados (186 ms)
+    ✓ un autor con formato inválido hoy responde 500 (162 ms)
+
+(node:86449) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(node:86449) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(node:86449) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(node:86449) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(node:86449) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(node:86449) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(node:86449) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+PASS tests/integration/lists.test.js (6.474 s)
+  POST /lists
+    ✓ crea una lista válida (201) (509 ms)
+    ✓ rechaza una lista sin nombre (400) (150 ms)
+    ✓ rechaza una lista sin visibilidad (400) (139 ms)
+    ✓ sin token responde 401 (2 ms)
+  GET /lists
+    ✓ solo trae las listas del usuario (291 ms)
+    ✓ sin token responde 401 (2 ms)
+  GET /lists/:id
+    ✓ el dueño ve su lista (200) (142 ms)
+    ✓ otro usuario no la ve (404) (298 ms)
+    ✓ una lista que no existe responde 404 (145 ms)
+    ✓ sin token responde 401 (3 ms)
+  GET /lists/user/:userId
+    ✓ el dueño ve sus listas públicas y privadas (316 ms)
+    ✓ otro usuario solo ve las públicas (294 ms)
+    ✓ sin token solo ve las públicas (279 ms)
+    ✓ un userId con formato inválido hoy responde 500 (277 ms)
+  PUT /lists/:id
+    ✓ el dueño cambia el nombre (200) (191 ms)
+    ✓ otro usuario no puede editarla (404) (286 ms)
+    ✓ sin token responde 401 (2 ms)
+  POST /lists/:id/movies
+    ✓ agrega una película (200) (138 ms)
+    ✓ rechaza una película sin poster (400) (142 ms)
+    ✓ otro usuario no puede agregar (404) (262 ms)
+    ✓ sin token responde 401 (2 ms)
+  DELETE /lists/:id/movies/:tmdbId
+    ✓ quita una película (200) (136 ms)
+    ✓ otro usuario no puede quitarla (404) (284 ms)
+    ✓ sin token responde 401 (2 ms)
+  DELETE /lists/:id
+    ✓ el dueño borra su lista (200) (182 ms)
+    ✓ otro usuario no puede borrarla (404) (302 ms)
+    ✓ no deja borrar la lista de Favoritos (400) (143 ms)
+    ✓ sin token responde 401 (2 ms)
+
+Test Suites: 3 passed, 3 total
+Tests:       48 passed, 48 total
+Snapshots:   0 total
+Time:        6.741 s
+Ran all test suites matching tests/integration.
