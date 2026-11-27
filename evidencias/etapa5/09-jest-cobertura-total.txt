@@ -1,0 +1,74 @@
+
+> test:coverage
+> jest --coverage
+
+FAIL tests/unit/user.model.test.js
+  ● Modelo User › rechaza una contraseña de menos de 8 caracteres
+
+    expect(received).toBeDefined()
+
+    Received: undefined
+
+      28 |   test('rechaza una contraseña de menos de 8 caracteres', () => {
+      29 |     const error = new User({ ...datosValidos, password: 'abc' }).validateSync();
+    > 30 |     expect(error).toBeDefined();
+         |                   ^
+      31 |   });
+      32 | });
+      33 |
+
+      at Object.toBeDefined (tests/unit/user.model.test.js:30:19)
+
+PASS tests/unit/users.controller.test.js
+PASS tests/unit/review.controller.test.js
+PASS tests/unit/list.controller.test.js
+PASS tests/integration/setup.test.js
+(node:89723) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:89726) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:89726) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(node:89724) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:89723) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+PASS tests/integration/account.test.js
+(node:89724) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(node:89723) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(node:89723) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+PASS tests/integration/users.test.js (5.981 s)
+(node:89722) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS tests/integration/reviews.test.js (6.363 s)
+(node:89722) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(node:89722) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(node:89722) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(node:89722) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(node:89722) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(node:89722) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(node:89722) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+PASS tests/integration/friends.test.js (8.1 s)
+PASS tests/integration/lists.test.js (8.315 s)
+----------------------------|---------|----------|---------|---------|-------------------------
+File                        | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s       
+----------------------------|---------|----------|---------|---------|-------------------------
+All files                   |   97.54 |    95.38 |   83.33 |    97.5 |                         
+ controllers                |     100 |    96.87 |     100 |     100 |                         
+  list_api_controllers.js   |     100 |    93.54 |     100 |     100 | 187-188                 
+  review_api_controllers.js |     100 |      100 |     100 |     100 |                         
+  users_api_controllers.js  |     100 |    97.14 |     100 |     100 | 179,246                 
+ models                     |     100 |      100 |     100 |     100 |                         
+  list.js                   |     100 |      100 |     100 |     100 |                         
+  review.js                 |     100 |      100 |     100 |     100 |                         
+  user.js                   |     100 |      100 |     100 |     100 |                         
+ routes                     |    85.5 |        0 |       0 |    85.5 |                         
+  api_route.js              |   65.51 |        0 |       0 |   65.51 | 17,21,25,29,33,37,41-45 
+  list_route.js             |     100 |      100 |     100 |     100 |                         
+  review_route.js           |     100 |      100 |     100 |     100 |                         
+  user_route.js             |     100 |      100 |     100 |     100 |                         
+----------------------------|---------|----------|---------|---------|-------------------------
+
+Test Suites: 1 failed, 9 passed, 10 total
+Tests:       1 failed, 197 passed, 198 total
+Snapshots:   0 total
+Time:        8.832 s
+Ran all test suites.
