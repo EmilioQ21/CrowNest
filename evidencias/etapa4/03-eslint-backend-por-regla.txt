@@ -1,0 +1,7 @@
+  14 consistent-return
+  13 no-unused-vars
+   5 max-lines-per-function
+   4 prefer-const
+   2 complexity
+   1 no-shadow
+   1 no-empty

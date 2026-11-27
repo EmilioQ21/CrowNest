@@ -1,0 +1,58 @@
+
+> lint
+> eslint .
+
+
+/Users/enriquemilo/Uni/calidad_software/CrowNest/BACKEND/controllers/list_api_controllers.js
+   18:16  warning  Expected to return a value at the end of async function 'getListById'  consistent-return
+   31:14  warning  'err' is defined but never used                                        no-unused-vars
+   36:16  warning  Expected to return a value at the end of async function 'createList'   consistent-return
+   60:14  warning  'err' is defined but never used                                        no-unused-vars
+   92:16  warning  Expected to return a value at the end of async function 'addMovie'     consistent-return
+  130:16  warning  Expected to return a value at the end of async function 'removeMovie'  consistent-return
+  156:16  warning  Expected to return a value at the end of async function 'deleteList'   consistent-return
+  186:16  warning  Expected to return a value at the end of async function 'updateList'   consistent-return
+
+/Users/enriquemilo/Uni/calidad_software/CrowNest/BACKEND/controllers/review_api_controllers.js
+   39:14  warning  'err' is defined but never used                                      no-unused-vars
+   51:14  warning  'err' is defined but never used                                      no-unused-vars
+   93:14  warning  'err' is defined but never used                                      no-unused-vars
+   98:44  error    Async arrow function has too many lines (51). Maximum allowed is 40  max-lines-per-function
+   98:44  error    Async arrow function has a complexity of 11. Maximum allowed is 8    complexity
+  103:13  error    'filtro' is never reassigned. Use 'const' instead                    prefer-const
+
+/Users/enriquemilo/Uni/calidad_software/CrowNest/BACKEND/controllers/users_api_controllers.js
+    3:7   warning  'bodyParser' is assigned a value but never used                      no-unused-vars
+   12:41  error    Async arrow function has too many lines (50). Maximum allowed is 40  max-lines-per-function
+   12:41  warning  Expected to return a value at the end of async arrow function        consistent-return
+   21:13  error    'cryptPass' is never reassigned. Use 'const' instead                 prefer-const
+   63:34  warning  Expected to return a value at the end of async arrow function        consistent-return
+   90:14  warning  'err' is defined but never used                                      no-unused-vars
+  103:18  warning  '_' is defined but never used                                        no-unused-vars
+  103:21  error    Empty block statement                                                no-empty
+  108:49  warning  Expected to return a value at the end of async arrow function        consistent-return
+  119:49  warning  Expected to return a value at the end of arrow function              consistent-return
+  128:35  warning  Expected to return a value at the end of async arrow function        consistent-return
+  140:14  warning  'err' is defined but never used                                      no-unused-vars
+  145:42  warning  Expected to return a value at the end of async arrow function        consistent-return
+  158:14  warning  'err' is defined but never used                                      no-unused-vars
+  164:37  error    Async arrow function has too many lines (60). Maximum allowed is 40  max-lines-per-function
+  164:37  warning  Expected to return a value at the end of async arrow function        consistent-return
+  164:37  error    Async arrow function has a complexity of 10. Maximum allowed is 8    complexity
+  225:40  warning  Expected to return a value at the end of async arrow function        consistent-return
+  306:41  error    Async arrow function has too many lines (45). Maximum allowed is 40  max-lines-per-function
+  310:15  warning  'currentUserId' is assigned a value but never used                   no-unused-vars
+  352:38  error    Async arrow function has too many lines (52). Maximum allowed is 40  max-lines-per-function
+  415:15  warning  'user' is assigned a value but never used                            no-unused-vars
+
+/Users/enriquemilo/Uni/calidad_software/CrowNest/BACKEND/models/user.js
+   2:7   warning  'uniqueValidator' is assigned a value but never used                  no-unused-vars
+   4:5   error    'userSchema' is never reassigned. Use 'const' instead                 prefer-const
+  51:11  error    'mongoose' is already declared in the upper scope on line 1 column 7  no-shadow
+
+/Users/enriquemilo/Uni/calidad_software/CrowNest/BACKEND/routes/api_route.js
+  44:13  error  'auth' is never reassigned. Use 'const' instead  prefer-const
+
+✖ 40 problems (13 errors, 27 warnings)
+  4 errors and 0 warnings potentially fixable with the `--fix` option.
+
