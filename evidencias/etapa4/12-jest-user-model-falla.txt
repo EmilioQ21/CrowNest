@@ -1,0 +1,32 @@
+
+> test
+> jest
+
+FAIL tests/unit/user.model.test.js
+  Modelo User
+    ✓ acepta un usuario válido (4 ms)
+    ✓ rechaza un usuario sin email (1 ms)
+    ✓ rechaza un usuario sin nombre
+    ✕ rechaza una contraseña de menos de 8 caracteres
+
+  ● Modelo User › rechaza una contraseña de menos de 8 caracteres
+
+    expect(received).toBeDefined()
+
+    Received: undefined
+
+      28 |   test('rechaza una contraseña de menos de 8 caracteres', () => {
+      29 |     const error = new User({ ...datosValidos, password: 'abc' }).validateSync();
+    > 30 |     expect(error).toBeDefined();
+         |                   ^
+      31 |   });
+      32 | });
+      33 |
+
+      at Object.toBeDefined (tests/unit/user.model.test.js:30:19)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 3 passed, 4 total
+Snapshots:   0 total
+Time:        0.325 s, estimated 1 s
+Ran all test suites.

@@ -1,0 +1,82 @@
+
+/Users/enriquemilo/Uni/calidad_software/CrowNest/FRONTEND/controllers/auth_controller.js
+   1:10  warning  'toggleForms' is defined but never used  no-unused-vars
+   5:36  error    Expected '===' and instead saw '=='      eqeqeq
+  45:10  warning  'logout' is defined but never used       no-unused-vars
+
+/Users/enriquemilo/Uni/calidad_software/CrowNest/FRONTEND/controllers/calendar_controller.js
+  36:26  warning  'errorTMDB' is defined but never used                                           no-unused-vars
+  50:1   warning  Function 'renderizarCalendario' has too many lines (88). Maximum allowed is 40  max-lines-per-function
+  80:17  error    The value assigned to 'fechaComparar' is not used in subsequent statements      no-useless-assignment
+  88:23  error    'año' is already declared in the upper scope on line 55 column 11               no-shadow
+  89:23  error    'mes' is already declared in the upper scope on line 56 column 11               no-shadow
+  90:23  error    'dia' is already declared in the upper scope on line 73 column 14               no-shadow
+
+/Users/enriquemilo/Uni/calidad_software/CrowNest/FRONTEND/controllers/env.js
+  11:53  error  Expected '!==' and instead saw '!='  eqeqeq
+  15:52  error  Expected '===' and instead saw '=='  eqeqeq
+
+/Users/enriquemilo/Uni/calidad_software/CrowNest/FRONTEND/controllers/home_controller.js
+   6:1   warning  Async function 'cargarMiniCalendario' has too many lines (85). Maximum allowed is 40  max-lines-per-function
+   6:1   warning  Async function 'cargarMiniCalendario' has a complexity of 10. Maximum allowed is 8    complexity
+  65:17  error    The value assigned to 'fechaComparar' is not used in subsequent statements            no-useless-assignment
+  71:23  error    'año' is already declared in the upper scope on line 30 column 11                     no-shadow
+  72:23  error    'mes' is already declared in the upper scope on line 31 column 11                     no-shadow
+  73:23  error    'dia' is already declared in the upper scope on line 58 column 14                     no-shadow
+
+/Users/enriquemilo/Uni/calidad_software/CrowNest/FRONTEND/controllers/list_controller.js
+   21:1   warning  Function 'renderListas' has too many lines (85). Maximum allowed is 40     max-lines-per-function
+   26:35  warning  Arrow function has too many lines (79). Maximum allowed is 40              max-lines-per-function
+  106:1   warning  Function 'renderPeliculas' has too many lines (54). Maximum allowed is 40  max-lines-per-function
+  169:48  warning  Async arrow function has too many lines (41). Maximum allowed is 40        max-lines-per-function
+
+/Users/enriquemilo/Uni/calidad_software/CrowNest/FRONTEND/controllers/movie_controller.js
+   76:1   warning  Async function 'loadUserRatedMovies' has too many lines (64). Maximum allowed is 40  max-lines-per-function
+  216:10  warning  'scrollMovies' is defined but never used                                             no-unused-vars
+  375:50  warning  Arrow function has too many lines (76). Maximum allowed is 40                        max-lines-per-function
+  377:11  error    'inputGenre' is already declared in the upper scope on line 345 column 7             no-shadow
+
+/Users/enriquemilo/Uni/calidad_software/CrowNest/FRONTEND/controllers/navbar_controller.js
+  3:1  warning  Function 'renderNavbar' has too many lines (72). Maximum allowed is 40  max-lines-per-function
+
+/Users/enriquemilo/Uni/calidad_software/CrowNest/FRONTEND/controllers/profile_controller.js
+  120:1   warning  Async function 'cargarListasPerfil' has too many lines (81). Maximum allowed is 40       max-lines-per-function
+  120:1   warning  Async function 'cargarListasPerfil' has a complexity of 9. Maximum allowed is 8          complexity
+  154:43  warning  Arrow function has too many lines (46). Maximum allowed is 40                            max-lines-per-function
+  202:1   warning  Async function 'cargarActividadReciente' has too many lines (46). Maximum allowed is 40  max-lines-per-function
+  289:1   warning  Function 'setupUserSearch' has too many lines (74). Maximum allowed is 40                max-lines-per-function
+  294:40  warning  Arrow function has too many lines (52). Maximum allowed is 40                            max-lines-per-function
+  296:39  warning  Async arrow function has too many lines (49). Maximum allowed is 40                      max-lines-per-function
+
+/Users/enriquemilo/Uni/calidad_software/CrowNest/FRONTEND/controllers/review_controller.js
+  104:50  warning  Arrow function has too many lines (108). Maximum allowed is 40                     max-lines-per-function
+  140:60  warning  Async arrow function has too many lines (70). Maximum allowed is 40                max-lines-per-function
+  140:60  warning  Async arrow function has a complexity of 12. Maximum allowed is 8                  complexity
+  219:1   warning  Async function 'fetchMovieReviews' has too many lines (58). Maximum allowed is 40  max-lines-per-function
+  219:1   warning  Async function 'fetchMovieReviews' has a complexity of 19. Maximum allowed is 8    complexity
+  280:1   warning  Async function 'renderReviews' has too many lines (67). Maximum allowed is 40      max-lines-per-function
+  280:1   warning  Async function 'renderReviews' has a complexity of 18. Maximum allowed is 8        complexity
+  368:1   warning  Function 'renderPagination' has too many lines (67). Maximum allowed is 40         max-lines-per-function
+  368:39  error    'currentPage' is already declared in the upper scope on line 215 column 5          no-shadow
+  514:25  warning  Async function has too many lines (66). Maximum allowed is 40                      max-lines-per-function
+
+/Users/enriquemilo/Uni/calidad_software/CrowNest/FRONTEND/controllers/users_controller.js
+   59:1   warning  Async function 'updateUser' has too many lines (42). Maximum allowed is 40        max-lines-per-function
+  121:1   warning  Async function 'updateUserPhotos' has too many lines (45). Maximum allowed is 40  max-lines-per-function
+  121:16  warning  'updateUserPhotos' is defined but never used                                      no-unused-vars
+  178:16  warning  'deleteUser' is defined but never used                                            no-unused-vars
+  180:11  warning  'token' is assigned a value but never used                                        no-unused-vars
+  228:9   warning  Async function 'friendRecom' expected no return value                             consistent-return
+  243:11  warning  'user' is assigned a value but never used                                         no-unused-vars
+  263:1   warning  Async function 'getPerfil' has too many lines (131). Maximum allowed is 40        max-lines-per-function
+  263:1   warning  Async function 'getPerfil' has a complexity of 15. Maximum allowed is 8           complexity
+  407:16  warning  'guardarNickname' is defined but never used                                       no-unused-vars
+  436:1   warning  Function 'friendPerfil' has too many lines (44). Maximum allowed is 40            max-lines-per-function
+  596:1   warning  Async function 'initProfile' has too many lines (44). Maximum allowed is 40       max-lines-per-function
+
+/Users/enriquemilo/Uni/calidad_software/CrowNest/FRONTEND/controllers/utils.js
+   2:10  warning  'mostrarLoader' is defined but never used    no-unused-vars
+  19:10  warning  'mostrarLoaderEl' is defined but never used  no-unused-vars
+
+✖ 57 problems (13 errors, 44 warnings)
+
