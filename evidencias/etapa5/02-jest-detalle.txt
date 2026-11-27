@@ -1,0 +1,173 @@
+FAIL tests/unit/user.model.test.js
+  Modelo User
+    ✓ acepta un usuario válido (4 ms)
+    ✓ rechaza un usuario sin email (1 ms)
+    ✓ rechaza un usuario sin nombre
+    ✕ rechaza una contraseña de menos de 8 caracteres
+
+  ● Modelo User › rechaza una contraseña de menos de 8 caracteres
+
+    expect(received).toBeDefined()
+
+    Received: undefined
+
+      28 |   test('rechaza una contraseña de menos de 8 caracteres', () => {
+      29 |     const error = new User({ ...datosValidos, password: 'abc' }).validateSync();
+    > 30 |     expect(error).toBeDefined();
+         |                   ^
+      31 |   });
+      32 | });
+      33 |
+
+      at Object.toBeDefined (tests/unit/user.model.test.js:30:19)
+
+PASS tests/unit/users.controller.test.js
+  registerUser
+    ✓ responde 401 si las contraseñas no coinciden (1 ms)
+    ✓ guarda la contraseña encriptada y crea la lista Favoritos (1 ms)
+  registerUser, casos de borde y errores
+    ✓ usa el id 1 para Favoritos si todavía no hay listas
+    ✓ responde con el usuario completo, incluida la contraseña cifrada (H3)
+    ✓ responde 400 si no se puede guardar el usuario (1 ms)
+  login
+    ✓ responde 401 si el usuario no existe
+    ✓ responde 401 si la contraseña es incorrecta
+    ✓ entrega un token si los datos son correctos
+  login, errores
+    ✓ responde 500 si falla la base de datos
+  optionalAuth
+    ✓ sigue sin usuario si no hay token
+    ✓ guarda el usuario si el token es válido
+    ✓ sigue sin usuario si el token es inválido
+  authMiddelwere
+    ✓ responde 401 si no hay token
+    ✓ responde 401 si el token es inválido o expiró
+    ✓ guarda el usuario y continúa si el token es válido (1 ms)
+  getUser
+    ✓ responde 404 si el usuario no existe
+    ✓ devuelve el usuario encontrado
+    ✓ responde 500 si falla la base de datos
+  getSocialData
+    ✓ responde 404 si el usuario no existe
+    ✓ devuelve amigos, solicitudes y sugerencias
+    ✓ responde 500 si falla la base de datos (1 ms)
+  getUsers, filtros
+    ✓ tipo 1 devuelve a quienes no son amigos ni tienen solicitud
+    ✓ tipo 2 devuelve solo los amigos
+    ✓ tipo 3 devuelve solo las solicitudes
+  getUsers, casos de borde y errores
+    ✓ responde 404 si el usuario no existe
+    ✓ responde 400 si el tipo de búsqueda no es válido
+  getUsers, paginación y errores
+    ✓ pagina los resultados (1 ms)
+    ✓ responde 500 si falla la base de datos
+  searchUsers
+    ✓ devuelve una lista vacía si la búsqueda tiene menos de 2 letras
+    ✓ devuelve solo datos públicos, sin la contraseña
+    ✓ responde 500 si falla la base de datos
+  updateUserInfo, contraseña
+    ✓ si la contraseña es la misma, no la actualiza (1 ms)
+    ✓ si la contraseña es nueva, la guarda encriptada
+  updateUserInfo, perfil y errores
+    ✓ responde 404 si el usuario no existe
+    ✓ actualiza el perfil y responde sin la contraseña
+    ✓ responde 400 si falla la actualización
+  deleteUserInfo
+    ✓ responde 404 si el usuario no existe
+    ✓ borra la cuenta del id de la URL, sin compararlo con el token (H2)
+    ✓ responde 500 si falla la base de datos (1 ms)
+  getOtherUser
+    ✓ responde 400 si el id no es válido
+    ✓ responde 404 si el usuario no existe
+    ✓ devuelve el perfil, los favoritos y las últimas reseñas
+  getOtherUser, casos de borde y errores
+    ✓ devuelve favoritos vacíos si no hay lista de favoritos
+    ✓ responde 500 si falla la base de datos
+  addFriend, rechazos
+    ✓ responde 400 si intentas agregarte a ti mismo
+    ✓ responde 404 si el usuario no existe
+    ✓ responde 400 si ya son amigos
+    ✓ responde 400 si ya enviaste una solicitud
+  addFriend, aceptados y errores
+    ✓ si el perfil es público, los hace amigos al instante
+    ✓ si el perfil es privado, envía una solicitud pendiente
+    ✓ responde 500 si falla la base de datos
+  handleFriendRequest
+    ✓ responde 400 si la acción no es válida
+    ✓ al aceptar, quita la solicitud y los hace amigos
+  handleFriendRequest, rechazo y errores
+    ✓ al rechazar, solo quita la solicitud
+    ✓ responde 500 si falla la base de datos
+
+PASS tests/unit/list.controller.test.js
+  getLists
+    ✓ devuelve las listas del usuario del token (1 ms)
+    ✓ responde 500 si falla la base de datos
+  getListById
+    ✓ convierte el id a número y busca solo listas del usuario
+    ✓ responde 404 si la lista no existe o no es del usuario (1 ms)
+    ✓ responde 500 si falla la base de datos
+  createList
+    ✓ responde 400 si faltan nombre o visibilidad
+    ✓ crea la lista con el siguiente id
+  createList, casos de borde y errores
+    ✓ usa el id 1 si todavía no hay listas
+    ✓ responde 500 si falla al guardar
+  getListsByUser
+    ✓ el dueño ve sus listas sin filtrar por visibilidad (1 ms)
+    ✓ otro usuario ve solo las listas públicas
+    ✓ responde 500 si el id del usuario no es válido
+  addMovie
+    ✓ responde 400 si faltan datos de la película
+    ✓ agrega la película solo en una lista del usuario
+    ✓ responde 404 si la lista no existe o no es del usuario
+    ✓ responde 500 si falla la base de datos
+  removeMovie
+    ✓ quita la película indicada de la lista del usuario (1 ms)
+    ✓ responde 404 si la lista no existe o no es del usuario
+    ✓ responde 500 si falla la base de datos
+  deleteList
+    ✓ responde 404 si la lista no existe o no es del usuario
+    ✓ no deja eliminar la lista de Favoritos
+    ✓ elimina una lista propia
+    ✓ responde 500 si falla la base de datos
+  updateList
+    ✓ actualiza solo los campos que se enviaron (1 ms)
+    ✓ responde 404 si la lista no existe o no es del usuario
+    ✓ responde 500 si falla la base de datos
+
+PASS tests/unit/review.controller.test.js
+  createReview
+    ✓ guarda la reseña y responde 201 (1 ms)
+    ✓ responde 400 si no se puede guardar
+  getUserReviews y getOtherUserReviews
+    ✓ getUserReviews devuelve las reseñas del usuario del token (1 ms)
+    ✓ getUserReviews responde 500 si falla la base de datos
+    ✓ getOtherUserReviews busca por el id de la URL
+    ✓ getOtherUserReviews responde 500 si falla la base de datos
+  updateReview
+    ✓ solo busca reseñas que pertenezcan al usuario del token
+    ✓ responde 404 y no actualiza si la reseña no es del usuario
+  updateReview, casos válidos y errores
+    ✓ actualiza la reseña propia
+    ✓ responde 400 si la actualización falla
+  deleteReview
+    ✓ borra solo si la reseña es del usuario del token
+    ✓ responde 404 si no existe o no es del usuario
+    ✓ responde 500 si falla la base de datos
+  getMovieReviews
+    ✓ usa página 1 y límite 5 por defecto y calcula las páginas
+    ✓ filtra por calificación numérica
+    ✓ no filtra por calificación si el valor es Todas
+  getMovieReviews con amigos y errores
+    ✓ si el usuario no tiene amigos, filtra por un id que no existe
+    ✓ filtra por los amigos del usuario
+  getMovieReviews por autor y errores
+    ✓ filtra por autor
+    ✓ responde 500 si algo falla
+
+Test Suites: 1 failed, 3 passed, 4 total
+Tests:       1 failed, 104 passed, 105 total
+Snapshots:   0 total
+Time:        0.651 s, estimated 1 s
+Ran all test suites.
