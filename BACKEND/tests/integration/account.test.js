@@ -22,7 +22,7 @@ const actualizar = (u, cuerpo) => con(request(app).put(`/users/${u.id}`), u).sen
 const borrar = (u, id) => con(request(app).delete(`/users/${id}`), u);
 
 describe('GET /users/:id', () => {
-  test('H20: hoy responde 500 porque usa parseInt sobre un id de Mongo', async () => {
+  test('H7: hoy responde 500 porque usa parseInt sobre un id de Mongo', async () => {
     const a = await crearUsuario(app);
     const res = await ver(a, a.id);
     expect(res.status).toBe(500);
