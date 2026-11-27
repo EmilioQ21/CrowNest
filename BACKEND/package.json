@@ -17,8 +17,8 @@
     "supertest": "^7.3.2"
   },
   "scripts": {
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
+    "lint": "eslint . --ignore-pattern tests/performance/carga.k6.js",
+    "lint:fix": "eslint . --ignore-pattern tests/performance/carga.k6.js --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "jest",
