@@ -1,0 +1,23 @@
+PASS tests/system/flows.test.js
+  RF-01 Registro de usuario
+    ✓ se registra, recibe su lista Favoritos y puede iniciar sesión (190 ms)
+  RF-02 Inicio de sesión y acceso sin cuenta
+    ✓ el login da un token válido; sin sesión solo se ve lo público (277 ms)
+  RF-04 Reseñas propias
+    ✓ crea, valida, edita y borra una reseña (151 ms)
+  RF-05 Ver reseñas de una película y de otros usuarios
+    ✓ cualquiera ve las reseñas de la película y de otro usuario (270 ms)
+  RF-06 Listas
+    ✓ crea una lista, agrega y quita películas, cambia su visibilidad y la borra (274 ms)
+  RF-07 Buscar usuarios y amistades
+    ✓ busca a un usuario, le envía una solicitud y la acepta (271 ms)
+  RF-08 Editar y eliminar el propio perfil
+    ✓ cambia foto, banner y privacidad, y luego elimina su cuenta (139 ms)
+  RF-09 Calendario de películas vistas
+    ✓ las reseñas traen su fecha de vista y se agrupan por mes (135 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       8 passed, 8 total
+Snapshots:   0 total
+Time:        2.977 s, estimated 3 s
+Ran all test suites matching tests/system.
