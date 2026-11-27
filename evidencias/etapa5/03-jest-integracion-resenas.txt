@@ -1,0 +1,38 @@
+PASS tests/integration/setup.test.js
+  Configuración de integración
+    ✓ la base de datos en memoria está conectada (2 ms)
+    ✓ la app responde sin conectarse a Atlas (13 ms)
+
+(node:73885) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:73885) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+PASS tests/integration/reviews.test.js
+  POST /reviews/crear
+    ✓ guarda una reseña válida (201) (182 ms)
+    ✓ rechaza una calificación de 6 (400) (130 ms)
+    ✓ rechaza una reseña sin título de película (400) (128 ms)
+    ✓ sin token responde 401 (2 ms)
+  GET /reviews/mis-resenas y /reviews/otras-resenas/:id
+    ✓ mis-resenas solo trae las del usuario (260 ms)
+    ✓ mis-resenas sin token responde 401 (1 ms)
+    ✓ otras-resenas trae las reseñas de otro usuario (254 ms)
+  PUT /reviews/editar/:id
+    ✓ el dueño edita su reseña (200) (133 ms)
+    ✓ otro usuario no puede editarla (404) (260 ms)
+    ✓ una calificación inválida responde 400 (134 ms)
+    ✓ sin token responde 401 (1 ms)
+  DELETE /reviews/borrar/:id
+    ✓ el dueño borra su reseña (200) (135 ms)
+    ✓ otro usuario no puede borrarla (404) (254 ms)
+    ✓ sin token responde 401 (1 ms)
+  GET /reviews/pelicula/:movieId
+    ✓ es público y trae solo las reseñas de esa película (140 ms)
+    ✓ filtra por calificación (133 ms)
+    ✓ pagina los resultados (132 ms)
+    ✓ un autor con formato inválido hoy responde 500 (131 ms)
+
+Test Suites: 2 passed, 2 total
+Tests:       20 passed, 20 total
+Snapshots:   0 total
+Time:        3.778 s, estimated 4 s
+Ran all test suites matching tests/integration.
