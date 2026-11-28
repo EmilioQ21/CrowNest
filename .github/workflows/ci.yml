@@ -1,0 +1,66 @@
+name: CI de calidad
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  backend:
+    runs-on: ubuntu-22.04
+    defaults:
+      run:
+        working-directory: BACKEND
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: BACKEND/package-lock.json
+      - name: Instalar dependencias
+        run: npm ci
+      - name: Gate de formato (Prettier)
+        run: npm run format:check
+      - name: Gate de ESLint (no más errores que la línea base de 13)
+        run: |
+          npm run lint -- -f json -o lint.json || true
+          node -e "const r = require('./lint.json'); const n = r.reduce((a, f) => a + f.errorCount, 0); console.log('errores de ESLint:', n, '(límite 13)'); process.exit(n > 13 ? 1 : 0)"
+      - name: Gate de pruebas y cobertura (mínimo 80 % de líneas)
+        run: npm run test:coverage
+      - name: Informativo - vulnerabilidades altas o críticas en producción
+        continue-on-error: true
+        run: npm audit --omit=dev --audit-level=high
+
+  frontend:
+    runs-on: ubuntu-22.04
+    defaults:
+      run:
+        working-directory: FRONTEND
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Instalar dependencias
+        run: npm ci
+      - name: Gate de formato (Prettier)
+        run: npm run format:check
+      - name: Gate de ESLint (no más errores que la línea base de 43)
+        run: |
+          npm run lint -- -f json -o lint.json || true
+          node -e "const r = require('./lint.json'); const n = r.reduce((a, f) => a + f.errorCount, 0); console.log('errores de ESLint:', n, '(límite 43)'); process.exit(n > 43 ? 1 : 0)"
+
+  secretos:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Informativo - secretos en el repositorio (gitleaks)
+        continue-on-error: true
+        run: docker run --rm -v "$PWD:/repo" ghcr.io/gitleaks/gitleaks:v8.30.1 git /repo --config /repo/.gitleaks.toml --redact --no-banner
