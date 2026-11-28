@@ -1,0 +1,5 @@
+main protegida: si
+Issues registrados: 0
+Versiones (tags): 0
+Pipeline en main: si
+Archivos de ADR en el repo: 0

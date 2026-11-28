@@ -1,0 +1,27 @@
+PR    autor       estado      horas  revisiones
+#1    EnriqueM05  integrado     0.9  0
+#2    EnriqueM05  integrado     0.6  0
+#3    EnriqueM05  integrado     0.4  0
+#4    EnriqueM05  integrado     0.0  0
+#5    EnriqueM05  integrado     0.1  0
+#6    EnriqueM05  integrado     0.8  0
+#7    EnriqueM05  integrado     0.7  0
+#8    EnriqueM05  integrado     0.5  0
+#9    EnriqueM05  integrado     0.1  0
+#10   EnriqueM05  integrado     7.5  0
+#11   EnriqueM05  integrado     7.1  0
+#12   EnriqueM05  integrado     6.4  0
+#13   EnriqueM05  integrado     5.9  0
+#14   EnriqueM05  integrado     5.6  0
+#15   EnriqueM05  integrado     0.2  0
+#16   EnriqueM05  integrado     0.1  0
+#17   EnriqueM05  integrado     3.9  0
+#18   EnriqueM05  open            -  0
+#19   EnriqueM05  integrado     3.1  0
+#20   EnriqueM05  integrado     2.2  0
+#21   EnriqueM05  integrado     0.1  0
+#22   EnriqueM05  open            -  0
+
+PR en total: 22 | integrados: 20 | abiertos: 2
+Integrados con al menos 1 revision: 0 de 20
+Horas hasta integrar: mediana 0.8, maxima 7.5
